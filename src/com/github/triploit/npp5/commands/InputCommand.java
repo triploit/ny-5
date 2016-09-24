@@ -25,7 +25,7 @@ public class InputCommand {
 			
 			if (v.getValue().isNumeric() && v.isNumeric() && vs.isNumeric())
 			{
-				v.setValue((new Value(in.length())));
+				v.setValue((new Value(Integer.parseInt(in))));
 			}
 			else if (v.getValue().isString() && !v.isNumeric() && vs.isString())
 			{

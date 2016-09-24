@@ -24,7 +24,7 @@ public class Geq {
 			{
 				if (val.getName().equals("[NotFound]"))
 				{
-					System.out.println("[ ERR ]:[ EQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 				}
 				else
 				{
@@ -37,11 +37,29 @@ public class Geq {
 			else
 			{
 				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
-		}
+			}
 		}
 		catch(Exception ex)
 		{
-			System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
+			if (!var.getName().equals("[NotFound]"))
+			{
+				if (val.getName().equals("[NotFound]"))
+				{
+					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+				}
+				else
+				{
+					if (var.getValue().getValue().toString().length() > val.getValue().getValue().toString().length())
+					{
+						return lv.getGotoIntByName(marke);
+					}			
+				}
+			}
+			else
+			{
+				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			}
+			//System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
 		}
 		
 		return CommandGetter.getJ();

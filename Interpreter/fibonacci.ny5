@@ -1,0 +1,20 @@
+{init}
+  defi  zahl1, 1;
+  defi  zahl2, 1;
+
+  defi  zwi1, [n];
+  defi  zwi2, [n];
+
+  defi  null, 0;
+{initE}
+
+{main}
+  prv   zahl1;@
+  mov   zahl2, zwi2;
+
+  add   zahl1, zahl2;
+  mov   zahl1, zahl2;
+
+  mov   zwi2, zahl1;
+  geq   zahl2,null,main;
+{mainE}

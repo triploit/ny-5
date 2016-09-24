@@ -1,22 +1,44 @@
 {main}
-  defs  string, "2a";
-  defs  string2, [n];
+  defs  inpf, [n];
+  defs  inpf2, [n];
 
-  say   "NULL?: !";
-  prv   string2;
-  say   "!";@
+  say   "Inp: ";
+  inp   inpf;
+  say   "Inp2: ";
+  inp   inpf2;
 
-  inp   string2;
-  ddv   string2;
+  defs  param1, [n];
+  defs  param2, [n];
 
-  eq    string,string2,ok;
-  neq   string,string2,nok;
+  mov   inpf, param1;
+  mov   inpf2, param2;
+
+  gt    function;
+  say   "Hat geklappt!";@
   end;
 
-{ok}
-  say   "JA!";@
+{function}
+  eq    param1,param2,fis;
+  leq   param1,param2,ika;
+  geq   param1,param2,iga;
+
+  {fun2}
+  add   param1, param2;
+  say   "Addiert?: ";
+
+  prv   param1;@
+  say   "Hat nicht geklappt!";@
   end;
 
-{nok}
-  say   "NEIN!";@
-  end;
+{fis}
+  say   "Ist beides gleich!";@
+  gt    fun2;
+
+{ika}
+  say   "P1 ist kleiner P2!";@
+  gt    fun2;
+
+{iga}
+  say   "P1 ist größer P2!";@
+  gt    fun2;
+end;

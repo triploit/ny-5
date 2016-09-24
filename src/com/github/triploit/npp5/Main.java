@@ -62,6 +62,8 @@ public class Main
 		Command mod = new Command("mod", 2);
 		lv.addLCommands(mod);
 		
+		Command pf = new Command("pf", 1);
+		lv.addLCommands(pf);
 		
 //		lv.getFunctionList().add(CommandFunctionPointers._do);
 //		lv.getFunctionList().add(CommandFunctionPointers.mov);
@@ -71,11 +73,29 @@ public class Main
 		
 		try 
 		{
-			Parser p = new Parser(args[0]);
-			Tokenizer tok = new Tokenizer(p);
-			
-			tok.doTokenize();
-			tok.executeCode();
+			if (args[0].equalsIgnoreCase("-c") || args[0].equalsIgnoreCase("--compile"))
+			{
+				try
+				{
+				Parser p = new Parser(args[1], true, args[2]);
+				Tokenizer tok = new Tokenizer(p);
+				
+				tok.doTokenize();
+				tok.executeCode();
+				}
+				catch(IndexOutOfBoundsException ex)
+				{
+					System.out.println("[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t>>  nypp -c <Eingabedatei> <Ausgabedatei>");
+				}
+			}
+			else
+			{
+				Parser p = new Parser(args[0], false, "");
+				Tokenizer tok = new Tokenizer(p);
+				
+				tok.doTokenize();
+				tok.executeCode();
+			}
 		} 
 		catch (IOException e) 
 		{

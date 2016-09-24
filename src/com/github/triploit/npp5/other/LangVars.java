@@ -25,7 +25,7 @@ public class LangVars
 			if (s.equals(name))
 				return x;
 		}
-		System.out.println("[ ERR ]:[ GOTO ] Konnte Sprungmarke \""+name+"\" nicht finden!");
+		System.out.println("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
 		System.exit(0);
 		return 0;
 	}
@@ -40,7 +40,7 @@ public class LangVars
 			if (s.equals(name))
 				return s;
 		}
-		System.out.println("[ ERR ]:[ GOTO ] Konnte Sprungmarke \""+name+"\" nicht finden!");
+		System.out.println("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
 		System.exit(0);
 		return "[NotFound]";
 	}
