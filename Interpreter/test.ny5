@@ -1,0 +1,22 @@
+{main}
+  defs  string, "2a";
+  defs  string2, [n];
+
+  say   "NULL?: !";
+  prv   string2;
+  say   "!";@
+
+  inp   string2;
+  ddv   string2;
+
+  eq    string,string2,ok;
+  neq   string,string2,nok;
+  end;
+
+{ok}
+  say   "JA!";@
+  end;
+
+{nok}
+  say   "NEIN!";@
+  end;
