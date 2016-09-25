@@ -1,5 +1,0 @@
-#!/bin/bash
-
-sudo cp -rf jar/ /bin/
-sudo cp nypp /bin/nypp
-echo "[ SYS ]:[ INSTALL ]:[ BASH ]:[ ECHO ] Fertig installiert!"
