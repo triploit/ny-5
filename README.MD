@@ -93,6 +93,100 @@
 --------------------
 ###1.0 Beispiele
 ####1.1 Fibonacci Zahlenfolge
+
+	{init}
+	  defi  zahl1, 1;
+	  defi  zahl2, 1;
+
+	  defi  zwi1, [n];
+	  defi  zwi2, [n];
+
+	  defi  null, 0;
+	{initE}
+
+	{main}
+	  prv   zahl1;@
+	  mov   zahl2, zwi2;
+
+	  add   zahl1, zahl2;
+	  mov   zahl1, zahl2;
+
+	  mov   zwi2, zahl1;
+	  geq   zahl2,null,main;
+	{mainE}
+
+
 ####1.2 Fakultaet einer Zahl berechnen
 ####1.3 Taschenrechner
 ####1.4 Kleines Text Adventure
+
+	{main}
+	  defi  cmd, [n];
+	  defi  a1,1;
+
+	  defi  a2,2;
+	  defi  a3,3;
+	  gt    p1;
+
+	{p1}
+	  say   "Du stehst in einem Wald";@
+	  say   "1. Graben";@
+	  say   "2. Norden";@
+	  say   "3. Süden";@
+
+	  gt    incmd;
+	  eq    cmd,a1,p2a;
+
+	  eq    cmd,a2,p2b;
+	  eq    cmd,a3,p2c;
+
+	  neq   cmd,a1,err;
+	  neq   cmd,a2,err;
+	  neq   cmd,a3,err;
+
+	{p2a}
+	  say   "Du gräbst tiefer und tiefer und stößt";@
+	  say   "auf eine Truhe Gold!";@
+	  say   "Du gehst nach Hause.";@
+	  gt    bend;
+
+	{p2b}
+	  say   "Du gehst nach Norden und siehst eine tiefe Schlucht.";@
+	  say   "Doch leider stolperst du über einen Stein und fällst";@
+	  say   "den Abhang hinunter.";@
+	  gt    p3b;
+
+	{p2c}
+	  say   "Du gehst nach Süden und erblickst Leere. Was tust du?";@
+	  say   "1. Du gehst nach Norden";@
+	  say   "2. Du gehst nach Hause";@
+
+	  gt    incmd;
+	  eq    cmd,a1,p2b;
+	  eq    cmd,a2,p3a;
+
+	  neq   cmd,a1,err;
+	  neq   cmd,a2,err;
+
+	{p3a}
+	  say   "Zuhause angekommen legst du dich hin";@
+	  say   "und schläfst ein...";@
+	  gt    bend;
+
+	{p3b}
+	  @say  "Du wachst in einem Krankenhaus auf,";@
+	  say   "wie hat man dich hierherbekommen?";@
+	  say   "Im Grunde war dir dies egal, du warst sicher.";@
+	  gt    bend;
+
+	{incmd}
+	  say   "> ";
+	  inp   cmd;
+	  return;
+
+	{err}
+	  say   "Falsche eingabe! Spiel beendet.";@
+	  end;
+
+	{bend}
+	  say   "ENDE";@
