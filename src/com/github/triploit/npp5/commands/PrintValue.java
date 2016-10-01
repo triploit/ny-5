@@ -21,6 +21,7 @@ public class PrintValue
 		else
 		{
 			System.out.println("[ ERR ]:[ PRV ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
+			System.exit(0);
 		}
 	}
 }

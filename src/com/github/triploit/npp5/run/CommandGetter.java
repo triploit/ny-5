@@ -1,5 +1,6 @@
 package com.github.triploit.npp5.run;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class CommandGetter
 		this.cmds = cmds;
 	}
 	
-	public void execute()
+	public void execute() throws IOException
 	{
 		System.out.println("[ NYPP ] Execute...\n");
 		int lj = 0;
@@ -138,12 +139,21 @@ public class CommandGetter
 					{
 						Mod.func(args);
 					}
-					// ##### =========== HINZUFÜGEN -> EQ, LEQ, GEQ, NEQ, EQN(INT), CAL, FUNC[(COMMANDS)] =========== #####
-					// Func -> Jedes Argument zu einem Stück zusammenflicken, dies in eine Variable packen
-					//		   und einen neuen Parser damit befüllen.
+//					else if (name.equalsIgnoreCase("pf"))
+//					{
+//						Pf.func(args);
+//					}
+					else if (name.equalsIgnoreCase("runf"))
+					{
+						RunF.func(args);
+					}
+					else if (name.equalsIgnoreCase("deff"))
+					{
+						DefFunction.func(args);
+					}
 					else
 					{
-						System.out.println("[ ERR ]:[ COMMANDGETTER ] Befehl \""+lcommands.get(i).getName()+"\" wurde noch keiner Funktion zugewiesen :(!");
+						System.out.println("[ ERR ]:[ COMMANDGETTER:"+name+" ] Befehl \""+lcommands.get(i).getName()+"\" wurde noch keiner Funktion zugewiesen :(!");
 					}
 						
 //						if (lcommands.get(i).getName().equalsIgnoreCase(LangVars.getFunctionList().get(z).getName()))

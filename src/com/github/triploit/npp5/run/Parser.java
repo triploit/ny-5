@@ -10,12 +10,32 @@ import java.io.IOException;
 
 import com.github.triploit.npp5.other.CompileCode;
 
+@SuppressWarnings("resource")
 public class Parser 
 {
 	private String code;
-	
-	@SuppressWarnings("resource")
+	private String filename;
+	private boolean doenc;
+	private String outfile;
+
 	public Parser(String filename, boolean doenc, String outfile) throws IOException
+	{
+		this.doenc = doenc;
+		this.outfile = outfile;
+		this.filename = filename;
+	}
+	
+	public String getRawCode()
+	{
+		return this.code;
+	}
+	
+	public void setRawCode(String code)
+	{
+		this.code = code;
+	}
+	
+	public void parseAll() throws IOException
 	{
 		if (!filename.endsWith(".ny5") && !filename.endsWith(".nct5"))
 		{
@@ -74,10 +94,5 @@ public class Parser
 			System.out.println("[ ERR ]:[ PARSER ]:[ FILE ]:[ NOTFOUND] Konnte Datei nicht finden!");
 			System.exit(0);
 		}
-	}
-	
-	public String getRawCode()
-	{
-		return this.code;
 	}
 }

@@ -56,6 +56,7 @@ public class Do
 		else
 		{
 			System.out.println("[ OUT ] Variable \""+args.get(2)+"\" konnte nicht gefunden werden!");
+			System.exit(0);
 		}
 		
 	}

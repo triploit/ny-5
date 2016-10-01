@@ -18,6 +18,7 @@ public class DoDeleteVariable
 		else
 		{
 			System.out.println("[ ERR ]:[ DEL ]:[ VAR ]:[ NOTFOUND ] Konnte die Variable \""+args.get(1)+"\" nicht finden!");
+			System.exit(0);
 		}
 	}
 }

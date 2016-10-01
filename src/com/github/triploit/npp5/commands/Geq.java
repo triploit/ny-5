@@ -25,6 +25,7 @@ public class Geq {
 				if (val.getName().equals("[NotFound]"))
 				{
 					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					System.exit(0);
 				}
 				else
 				{
@@ -37,6 +38,7 @@ public class Geq {
 			else
 			{
 				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				System.exit(0);
 			}
 		}
 		catch(Exception ex)
@@ -46,6 +48,7 @@ public class Geq {
 				if (val.getName().equals("[NotFound]"))
 				{
 					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					System.exit(0);
 				}
 				else
 				{
@@ -58,6 +61,7 @@ public class Geq {
 			else
 			{
 				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				System.exit(0);
 			}
 			//System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
 		}

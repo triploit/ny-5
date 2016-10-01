@@ -15,6 +15,14 @@ public class Main
 	//@SuppressWarnings("static-access")
 	public static void main(String[] args)
 	{		
+		
+		System.out.println(">>\tNypp Intepreter/Compiler (V16299) \n");
+		
+		if (args.length < 1)
+		{
+			System.out.println("[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t>>  nypp <Datei>");
+		}
+		
 		Command mov = new Command("mov", 2);
 		lv.addLCommands(mov);
 		
@@ -65,6 +73,11 @@ public class Main
 		Command pf = new Command("pf", 1);
 		lv.addLCommands(pf);
 		
+		Command deff = new Command("deff", 2);
+		lv.addLCommands(deff);
+		Command runf = new Command("runf", 1);
+		lv.addLCommands(runf);
+		
 //		lv.getFunctionList().add(CommandFunctionPointers._do);
 //		lv.getFunctionList().add(CommandFunctionPointers.mov);
 //		lv.getFunctionList().add(CommandFunctionPointers.Eq);
@@ -75,9 +88,11 @@ public class Main
 		{
 			if (args[0].equalsIgnoreCase("-c") || args[0].equalsIgnoreCase("--compile"))
 			{
+				System.out.println("[ NYPP ] Compiling...");
 				try
 				{
 				Parser p = new Parser(args[1], true, args[2]);
+				p.parseAll();
 				Tokenizer tok = new Tokenizer(p);
 				
 				tok.doTokenize();
@@ -86,11 +101,13 @@ public class Main
 				catch(IndexOutOfBoundsException ex)
 				{
 					System.out.println("[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t>>  nypp -c <Eingabedatei> <Ausgabedatei>");
+					System.exit(0);
 				}
 			}
 			else
 			{
 				Parser p = new Parser(args[0], false, "");
+				p.parseAll();
 				Tokenizer tok = new Tokenizer(p);
 				
 				tok.doTokenize();
@@ -101,6 +118,7 @@ public class Main
 		{
 			System.out.println("[ ERR ] Konnte Datei nicht finden! Wurde eine Datei angegeben?\n\n ->->-> Java-Error:");
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 	

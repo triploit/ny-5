@@ -23,6 +23,7 @@ public class Eq
 			if (val.getName().equals("[NotFound]"))
 			{
 				System.out.println("[ ERR ]:[ EQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+				System.exit(0);
 			}
 			else
 			{
@@ -35,6 +36,7 @@ public class Eq
 		else
 		{
 			System.out.println("[ ERR ]:[ EQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			System.exit(0);
 		}
 		
 		return CommandGetter.getJ();

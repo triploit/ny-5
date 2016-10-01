@@ -1,5 +1,6 @@
 package com.github.triploit.npp5.Objects;
 
+import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Variable 
@@ -9,8 +10,16 @@ public class Variable
 	private Value value;	
 	private boolean num;
 	
+	@SuppressWarnings("static-access")
 	public Variable(String name, Value v)
 	{
+		String names = name.substring(0,1);
+		if (Main.getLangVars().isNumeric(names) || name.contains("[") || name.contains("]") || name.contains("(") || name.contains(")") || name.contains("{") || name.contains("}") || name.contains(" ") || name.contains("\"") || name.contains(",") || name.contains(";") || name.contains(":") || name.contains(".") || name.contains("!") || name.contains("§") || name.contains("$"))
+		{
+			System.out.println("[ ERR ]:[ VAR ]:[ DEFN ]:[ ILLEGALCHARACTERIN:"+name+" ] Eine Variable darf nur aus Buchstaben bestehen!");
+			System.exit(0);
+		}
+			
 		this.name = name;
 		this.value = v;
 	}
@@ -27,6 +36,7 @@ public class Variable
 			this.value = value;
 		else
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+		System.exit(0);
 	}
 
 	public void setName(String name) 
@@ -70,6 +80,7 @@ public class Variable
 		else
 		{
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.exit(0);
 		}
 	}
 	
@@ -92,7 +103,8 @@ public class Variable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ REMVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.exit(0);
 		}
 	}
 	
@@ -108,7 +120,8 @@ public class Variable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ MULVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.exit(0);
 		}
 	}
 	
@@ -124,7 +137,8 @@ public class Variable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ MODVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.exit(0);
 		}
 	}
 	
@@ -140,7 +154,8 @@ public class Variable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ DIVVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
+			System.exit(0);
 		}
 	}
 

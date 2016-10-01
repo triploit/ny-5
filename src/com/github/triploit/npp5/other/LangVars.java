@@ -1,18 +1,20 @@
 package com.github.triploit.npp5.other;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.github.triploit.npp5.Objects.Command;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.Objects.Function;
 
 public class LangVars 
 {
 	private List<Command> lcommands = new ArrayList<Command>();
 	private List<Variable> lvars = new ArrayList<Variable>();
-	private static List<Function> flist;
 	private List<String> gtv = new ArrayList<String>();
+	private List<Function> fs = new ArrayList<Function>();
 
 	public int getGotoIntByName(String name)
 	{
@@ -79,22 +81,37 @@ public class LangVars
 		gtv.add(gtvn);
 	}
 	
+	public void addFunction(Function f)
+	{
+		fs.add(f);
+	}
+	
+	public Function getFunctionByName(String name) throws IOException
+	{
+		for (int i = 0; i < fs.size(); i++)
+		{
+			String s = fs.get(i).getName();
+			
+			if (s.equals(name))
+				return fs.get(i);
+		}
+		System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
+		System.exit(0);
+		return (Function) (new Function("[NotFound]", "[<FUNKTION NICHT GEFUNDEN>]"));
+	}
+	
 	public List<Command> getLCommands() 
 	{
 		return lcommands;
 	}
 	
-	public static List<Function> getFunctionList()
-	{
-		return flist;
-	}
-	
-	public static interface Function 
-	{
-        void runFunction(List<String> args);
-        String getName();
-        void setName(String s);
-    }
+//	public static interface Function 
+//	{
+//        void runFunction(List<String> args);
+//        String getName();
+//        void setName(String s);
+//		String getCommands();
+//    }
 	
 	
 	public void addLCommands(Command lcommand) 

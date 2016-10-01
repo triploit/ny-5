@@ -1,5 +1,6 @@
 package com.github.triploit.npp5.run;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Tokenizer
 		String tmpstr = "";
 		
 		boolean isStr = false;
+		boolean func = false;
 		boolean kmt = false;
 		
 		for (int i = 0; i < this.code.length; i++)
@@ -37,7 +39,15 @@ public class Tokenizer
 			if (tmpstr.startsWith("{") && tmpstr.endsWith("}"))
 			{
 				LangVars lv = Main.getLangVars();
-				lv.addGotoValue(tmpstr.replace("{", "").replace("}", "")+"~"+cmds.size());
+				tmpstr = tmpstr.replace("{", "").replace("}", "")+"~"+cmds.size();
+				
+				if (lv.findGotoByName(tmpstr))
+				{
+					System.out.println("[ ERR ]:[ GOTO ]:[ EXISTS:"+tmpstr+" ] Sprungmarke existiert bereits!");
+					System.exit(0);
+				}
+				
+				lv.addGotoValue(tmpstr);
 				tmpstr = "";
 			}
 			
@@ -51,63 +61,70 @@ public class Tokenizer
 			{				
 				if (!kmt)
 				{
-					if (!isStr)
+					if (!func)
 					{
-						if (code[i] == ';' && code[i] != ',')
+						if (!isStr)
 						{
-							if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
-								tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+							if (code[i] == ';' && code[i] != ',')
+							{
+								if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
+									tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+								
+								try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
+								catch (NullPointerException ex) {}
 							
-							try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
-							catch (NullPointerException ex) {}
-						
-							//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
-							tmpstr = "";
+								//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
+								tmpstr = "";
+								
+								tmpstr += code[i];
+								this.cmds.add(tmpstr);
+								tmpstr = "";
+							}
+							else if (code[i] == '@')
+							{
+								
+								if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
+									tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+								
+								try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
+								catch (NullPointerException ex) {}
 							
-							tmpstr += code[i];
-							this.cmds.add(tmpstr);
-							tmpstr = "";
-						}
-						else if (code[i] == '@')
-						{
+								//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
+								tmpstr = "";
+								
+								tmpstr += code[i];
+								this.cmds.add(tmpstr);
+								tmpstr = "";
+							}
+							else
+							{
 							
-							if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
-								tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+								if ((i+1) < code.length)
+								{
+									for (int c = (i+1); c < this.code.length && (code[c] == ' ' || code[c] == ',' || code[c] == '\t' || code[c] == ';' || code[c] == '\n') && code[c] != '@'; c++)
+									{
+										if (c >= this.code.length)
+											continue;
+										else
+											i = c;
+									}
+								}
+															
+								if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
+									tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+								
+								try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
+								catch (NullPointerException ex) {}
 							
-							try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
-							catch (NullPointerException ex) {}
-						
-							//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
-							tmpstr = "";
+								//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
+								tmpstr = "";
+							}
 							
-							tmpstr += code[i];
-							this.cmds.add(tmpstr);
-							tmpstr = "";
 						}
 						else
 						{
-						
-							if ((i+1) < code.length)
-							{
-								for (int c = (i+1); c < this.code.length && (code[c] == ' ' || code[c] == ',' || code[c] == '\t' || code[c] == ';' || code[c] == '\n') && code[c] != '@'; c++)
-								{
-									if (c >= this.code.length)
-										continue;
-									else
-										i = c;
-								}
-							}
-														
-							if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
-								tmpstr = tmpstr.substring(1, tmpstr.length()-1);
-							
-							try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
-							catch (NullPointerException ex) {}
-						
-							//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
-							tmpstr = "";
+							tmpstr += code[i];
 						}
-						
 					}
 					else
 					{
@@ -117,6 +134,20 @@ public class Tokenizer
 			}
 			else
 			{
+				if (code[i] == '=' && !isStr && !kmt)
+				{
+					if (func)
+					{
+						func = false;
+						System.out.println("AUF");
+					}
+					else
+					{
+						System.out.println("ZU");
+						func = true;
+					}
+				}
+				
 				if (code[i] == '?' && !isStr)
 				{
 					if (kmt)
@@ -133,12 +164,22 @@ public class Tokenizer
 						isStr = true;
 				}
 				
+//				if (code[i] == '(')
+//				{
+//					func = true;
+//				}
+//				
+//				if (code[i] == ')')
+//				{
+//					func = false;
+//				}
+//				
 				tmpstr = tmpstr + (""+code[i]);
 			}
 		}
 	}
 	
-	public void executeCode()
+	public void executeCode() throws IOException
 	{
 		LangVars lv = Main.getLangVars();
 		CommandGetter getter = new CommandGetter(this.cmds, lv.getLCommands());

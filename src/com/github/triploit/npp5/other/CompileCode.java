@@ -45,6 +45,7 @@ public class CompileCode
 		lc.addString("{",      "_0nf7a9wq2rdfqrnzfh9m00ßm7qß7zhmfqtzbf9awnfß0aw8f9");
 		lc.addString("}",      "_w70fa7nwq2rfzhvuoqm0jb74rhnzq09n8v8z88f9a0ßwfn0aw79b");
 		lc.addString(" ",      "_nw0faqrfvnzm9q087rnfzh0viihdgztn0wf60fn7a90w7fn");
+		lc.addString("\t",      "_nw1faqrfvnzm9q087rnfzh0viihdgztn0wf60fn7a90w7fn");
 		lc.addString("\"",     "_2w3e45r5qrwfnz9e8r7gt83nvrg9097mt6zi7ri5u8etj");
 		lc.addString(",",      "_w3zu487wzrfnqz98t89q7nbu9rzq78zhsrjrk44zu5hj5i");
 		

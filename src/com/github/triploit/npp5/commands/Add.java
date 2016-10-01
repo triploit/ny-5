@@ -30,6 +30,7 @@ public class Add
 		else
 		{
 			System.out.println("[ ERR ]:[ ADD ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			System.exit(0);
 		}
 	}
 }

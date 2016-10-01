@@ -18,6 +18,7 @@ public class DoDeleteMarke
 		else
 		{
 			System.out.println("[ ERR ]:[ DEL ]:[ GOTO ]:[ NOTFOUND ] Konnte die Sprungmarke \""+args.get(1)+"\" nicht finden!");
+			System.exit(0);
 		}
 	}
 }

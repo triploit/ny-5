@@ -29,6 +29,7 @@ public class Mul {
 		else
 		{
 			System.out.println("[ ERR ]:[ MUL ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			System.exit(0);
 		}
 	}
 }

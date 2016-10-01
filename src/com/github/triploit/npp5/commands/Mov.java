@@ -24,6 +24,7 @@ public class Mov
 		if (var.getName().equals("[NotFound]"))
 		{
 			System.out.println("[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!");
+			System.exit(0);
 		}
 		else
 		{

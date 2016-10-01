@@ -43,52 +43,262 @@
 -----------
 
 ###0.1 Der Interpreter
-####0.1.1 Eine Datei ausführen
+Der Interpreter besteht aus der Datei nypp.bat (Windows) und nypp (Linux/MacOS). Diese Dateien greifen auf die ny++.jar zurück.
+
+Um den Interpreter zu starten einfach den Befehlsprozessor für das jeweilige System starten und dann die Datei nypp.bat/nypp mit der jeweiligen Datei auszuführen:
+
+Mac/Linux:
+
+	./nypp	<Datei>
+Windows:
+
+	nypp.bat <Datei>
+
+####**0.1.1 Eine Datei ausführen**
+Um eine Datei auszuführen, geben wir sie einfach als erstes Argument an:
+Mac/Linux:
+
+	./nypp	trpg.ny5
+Windows:
+
+	nypp.bat trpg.ny5
+Hier als Beispiel wird die Datei trpg.ny5 ausgewählt.
+
 
 ------------------------
 ###0.2 Der Compiler
-####0.2.1 Eine Datei kompilieren
-####0.2.2 Eine kompilierte Datei ausführen
+Der Compiler ist im Interpreter erhalten. Wir führen ihn aus wenn wir mit dem Argument `-c` oder `--compile` arbeiten:
+
+Mac/Linux:
+
+	./nypp	-c <EingabeDatei> <AusgabeDatei>.nct5
+Windows:
+
+	nypp.bat -c <EingabeDatei> <AusgabeDatei>.nct5
+Der Compiler wandelt dann die Eingabedatei, in die Ausgabedatei um. Am Ende hat man dann zwei Dateien, wobei die kompilierte Version mit `.nct5` enden sollte. In der Kompilierten Datei entsteht dann ein bytecodeartiger Text, der sehr unverständlich ist.
+####**0.2.1 Eine Datei kompilieren**
+Wir geben als Argument 1 das Test Text Adventure und als Argument 2 die Ausgabedatei an:
+Mac/Linux:
+
+	./nypp	-c trpg.ny5 compiled_trpg.nct5
+Windows:
+
+	nypp.bat -c trpg.ny5 compiled_trpg.nct5
+####**0.2.2 Eine kompilierte Datei ausführen**
+Um eine kompilierte Datei auszuführen, geben wir sie einfach als erstes Argument an, so als wäre sie gar nicht kompiliert worden:
+Mac/Linux:
+
+	./nypp	compiled_trpg.nct5
+Windows:
+
+	nypp.bat compiled_trpg.nct5
+Hier als Beispiel wird die Datei `compiled_trpg.nct5` ausgewählt.
 
 ----------------------
 ###0.3 Ausgabe
-####0.3.1 Say
-####0.3.2 Prv
+In Ny++5 ist es genau wie in Ny++, Werte und Strings auszugeben. Da gibt es zwei Funktionen für:
+
+* `say` für Ausgaben ohne Werte
+* `prv` für Werte
+####**0.3.1 Say**
+Say gibt nur Sätze aus, dies ist einfach umzusetzen:
+
+	say "Hallo Welt";
+Das bewirkt, dass `Hallo Welt` auf der Konsole erscheint, ohne Zeilenumbruch. Für einen Zeilenumbruch muss nur ein `@` an das Ende des Befehls angehengt werden:
+
+	say "Hallo Welt";@
+Dies gibt dann auch `Hallo Welt` mit Zelenumbruch aus.
+####**0.3.2 Prv**
+Der `prv`-Befehl gibt nur Werte von Variablen aus:
+
+	prv Variablen_Name;
+Dabei wird der Wert der Variable `Variablen_Name` ausgegeben, wie man Variablen erstellt, siehst du in
+
+> 0.4 Variablen
+
+dort wird alles erklärt.
+Um auch hier einen Zeileunumbruch zu erzeugen, wieder ein `@` ans Ende des Befehls:
+
+	prv Variablen_Name;@
 
 -----------------------
 ###0.4 Variablen
-####0.4.1 Strings
-####0.4.2 Integer
+Es ist nun endlich möglich, Variablen! Es sind zwei Typen verfügbar: Zum Einen der Integer, zum Anderen der String.
+####**0.4.1 Strings**
+
+Strings werden deklariter, indem wir das Schlüsselwort `defs` verwenden:
+
+	defs [Name_der_Variable], [Wert];
+Beispiel:
+
+	defs s, "Hallo Welt!";
+Damit wird eine Varibale `s` mit dem Wert `Hallo Welt` erstellt.
+
+####**0.4.2 Integer**
+
+Integer, werden genau wie Strings deklariert, bloß dass wir statt `defs`, `defi` verwenden:
+
+	defi i, 7;
+Hier wurde die Variable `i` mit dem Wert `7` erstellt.
+
+####**0.4.3 Leere Variablen**
+
+Manchmal brauchen wir auch leere Variablen, diese deklarierenb wir so:
+
+String
+
+	defs s, [n];
+Integer:
+
+	defi i, [n];
+Dabei steht `[n]` für `null`, was das bedeutet, ist wohl selbsterklärend.
 
 -----------------------
 ###0.5 Eingabe
 
+Ja, auch Input ist hier möglich, von String und Integer. Dies bewirken wir indem wir das Schlüsselwort `inp` verwenden:
+
+	inp [Variable];
+Ein Beispiel:
+
+	defi i,[n];
+	inp  i;
+
+	say  "Wert von I: ";
+	prv  i;@
+Zuerst wird die Variable `i` deklariert, die dann mit `inp` eingegeben wird, und dann ausgegeben wird.
+So würde das dann auf der Konsole aussehen:
+
+	3
+	Wert von I: 3
+Wobei die erste `3` die Eingabe ist.
+
 --------------------
 ###0.6 Werte verändern
-####0.4.1 Add
-####0.4.2 Rem
-####0.4.3 Div
-####0.4.4 Mul
-####0.4.5 Del
+
+Na klar muss man in jeder Programmiersprache mit Werten arbeiten, sie verändern usw. Also ist das hier auch möglich!
+
+####**0.6.1 Add**
+
+####bei Strings
+
+Bei Strings wird der jeweilige String einfach zur Varibale hinzuadiert, aus `s` = `Hallo ` in ...
+
+	defs s, "Hallo ";
+	defs w, "Welt!";
+
+	add s,w;
+	prv s;@
+... wird `s` = `Hallo Welt!`, dabei wird `w` nicht gelöscht.
+
+####bei Integern
+
+Bei Integern wird dann eine einfache Addition ausgeführt:
+
+	defi i, 8;
+	defi i2, 2;
+
+	add i, i2;
+	say  "I: ";
+	prv i;@
+`i` = `10`
+`i2` wird nicht gelöscht!
+
+####**0.6.2 Rem**
+
+####bei Strings
+
+Bei Strings könnte dies eine sehr nützliche Funktion sein, denn es ist möglich, Strings in Strings zu löschen:
+
+	defs s, "Hallo Welt mal wieder!";
+	defs r, " mal wieder";
+
+	rem s, r;
+	prv s;@
+Aus `s` wird `r` gelöscht, das bedeutet aus `Hallo Welt mal wieder!`(s) wird `Hallo Welt!`(r gelöscht).
+
+####bei Integern
+
+Bei Integern wird dann eine einfache Subtraktion ausgeführt:
+
+	defi i, 8;
+	defi i2, 2;
+
+	rem i, i2;
+	say  "I: ";
+	prv i;@
+`i` = `6`
+`i2` wird nicht auf `0` gesetzt!
+
+####**0.6.3 Div**
+**!!! => Nicht bei Strings möglich**
+
+Es ist möglich, Integer zu dividieren:
+
+	div [Variable1], [Variable2];
+
+In Ny++5 wird keiner der beiden Variablen gelöscht, es wird lediglich zur Variable1 Variable2 multipliziert.
+Beispiel dazu:
+
+	defi i, 8;
+	defi a, 2;
+
+	div i, a;
+	say "I: ";
+	prv i;@
+
+`I: 4`, ist doch logisch, oder?
+
+####**0.6.4 Mul**
+**!!! => Nicht bei Strings möglich**
+
+Es ist möglich, Integer zu multiplizieren:
+
+	mul [Variable1], [Variable2];
+
+In Ny++5 wird keiner der beiden Variablen gelöscht, es wird lediglich zur Variable1 Variable2 multipliziert.
+Beispiel dazu:
+
+	defi i, 8;
+	defi a, 2;
+
+	mul i, a;
+	say "I: ";
+	prv i;@
+
+`I: 16`, ist doch logisch, oder?
+
+####**0.6.5 Del**
+
+Eine genaue Del-Funktion gibt es nicht, es ist jedoch möglich mit der Rem-Funktion eine Variable zurückzusetzen:
+
+	defs a, "Hallo Welt!";
+	rem a, a;
+
+	say "A: ";
+`rem a, a;` löscht `a` aus `a`, das ist dann `NICHTS`.
 
 ---------------------
 
 ###0.7 Sprungmarken
-#### 0.7.1 Deklaration
-#### 0.7.2 Aufrufen
-#### 0.7.3 Return
+
+Auch hier werden Sprungmarken nicht ausgelassen.
+
+#### **0.7.1 Deklaration**
+#### **0.7.2 Aufrufen**
+#### **0.7.3 Return**
 
 ----------------------
 ###0.8 Werte vergleichen
-####0.8.1 Eq
-####0.8.2 Neq
-####0.8.3 Geq
-####0.8.4 Leq
+####**0.8.1 Eq**
+####**0.8.2 Neq**
+####**0.8.3 Geq**
+####**0.8.4 Leq**
 
 ---------------------
 ###0.9 Werte löschen
-####0.9.1 Sprungmarken löschen
-####0.9.2 Variablen löschen
+####**0.9.1 Sprungmarken löschen**
+####**0.9.2 Variablen löschen**
 
 --------------------
 ###1.0 Beispiele
@@ -117,7 +327,133 @@
 
 
 ####1.2 Fakultaet einer Zahl berechnen
+
+	{init}
+	  defi  input, [n];
+	  defi  ctr, [n];
+
+	  defi  null, [n];
+	  defi  tmp, [n];
+
+	  defi  ctrm, [n];
+	  defi  a1, 1;
+
+	  say   "> ";
+	  inp   input;
+
+	  mov   input, tmp;
+	  rem   input, a1;
+
+	  mov   input, ctrm;
+	{initE}
+
+	{main}
+	  add   ctr, a1;
+	  mul   tmp, ctr;
+
+	  leq    ctr,ctrm,main;
+	  prv    tmp;@
+	{mainE}
+
+
 ####1.3 Taschenrechner
+
+	{init}
+	  {vinit}
+	    defi  a11, 2;
+	    defi  a2, [n];
+	    defi  a1, [n];
+
+	    defi  a3, [n];
+	    defi  a0, [n];
+	    defi  a12, 0;
+
+	    defi  a13, 1;
+	    defi  a14, 2;
+	    defi  a4, [n];
+
+	    say   "0 > ";
+	    inp   a0;
+	    say   "1 > ";
+	    inp   a1;
+
+	    mov   a0, a2;
+	    mov   a1, a3;
+	{initE}
+
+	{main}
+	  gt    dz;
+	  {gz}
+	    say   "Die eingegebene Zahl ist gerade!";@
+	    gt    dze;
+	  {ngz}
+	    say   "Die eingegebene Zahl ist nicht gerade!";@
+	    gt    dze;
+	  {dz}
+	    mod   a1, a11;
+
+	    eq    a1,a12,gz;
+	    neq   a1,a12,ngz;
+
+	    gt    backup;
+	    {dze}
+
+	  {addition}
+	    gt    backup;
+
+	    add   a0, a1;
+	    say   "Addition: ";
+	    prv   a0;@
+
+	    gt    backup;
+
+	  {subtraktion}
+	    rem   a0, a1;
+	    say   "Subtraktion: ";
+	    prv   a0;@
+
+	    gt    backup;
+
+	  {multiplikation}
+	    mul   a0, a1;
+	    say   "Multiplikation: ";
+	    prv   a0;@
+
+	    gt    backup;
+
+	  {division}
+	    div   a0, a1;
+	    say   "Division: ";
+	    prv   a0;@
+
+	    gt    backup;
+
+	  say   "Berechnung beendet!";@@
+	  {endcalc}
+	    say   "1. Wiederholen";@
+	    say   "2. Ende";@
+
+	    say   "> ";
+	    inp   a4;
+	    eq    a4,a13,init;
+	    eq    a4,a14,mainE;
+
+	    neq   a4,a13,err;
+	    neq   a4,a14,err;
+
+	  {err}
+	    say  "Die Eingabe war nicht korrekt!";@
+	    gt   endcalc;
+
+	  {backup}
+	    mov   a2, a0;
+	    mov   a3, a1;
+	    return;
+
+	{mainE}
+	end
+
+
 ####1.4 Kleines Text Adventure
 
 	{main}

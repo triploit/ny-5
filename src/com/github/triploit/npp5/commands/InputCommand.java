@@ -8,7 +8,8 @@ import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
 import com.github.triploit.npp5.other.LangVars;
 
-public class InputCommand {
+public class InputCommand 
+{
 	@SuppressWarnings("resource")
 	public static void func(List<String> args)
 	{
@@ -40,6 +41,7 @@ public class InputCommand {
 		else
 		{
 			System.out.println("[ ERR ]:[ INP ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
+			System.exit(0);
 		}
 	}
 }

@@ -29,6 +29,7 @@ public class Div {
 		else
 		{
 			System.out.println("[ ERR ]:[ DIV ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			System.exit(0);
 		}
 	}
 }
