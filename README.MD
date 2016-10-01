@@ -285,20 +285,117 @@ Eine genaue Del-Funktion gibt es nicht, es ist jedoch möglich mit der Rem-Funkt
 Auch hier werden Sprungmarken nicht ausgelassen.
 
 #### **0.7.1 Deklaration**
+
+Wir deklariern Sprungmarken wie in Ny++, mit Klammer-Auf und Klammer-Zu:
+
+	{marke}
+
 #### **0.7.2 Aufrufen**
+
+Wenn eine Sprungmarke deklariert wurde, ist es möglich von jeder Stelle des Codes zu dieser Marke zu springen:
+
+	gt marke;
+
 #### **0.7.3 Return**
+
+Es hier etwas ganz tolles möglich, das der Sprache noch viele Male das Leben retten wird. Der Befehl `return` springt zum letzten aufgerufenen Sprung:
+
+	{main}
+		say	"Hallo ";
+		gt  marke;
+		say	"!";
+		end;
+
+	{marke}
+		say "Welt";
+		return;
+
+Return springt zum letzten `gt` und führt von da aus die nächsten Befehle aus.
+
 
 ----------------------
 ###0.8 Werte vergleichen
+
+In Ny++5 kann man genauso wie in Ny++ Werte vergleichen. Die Funktionen sind komplett gleich, außer dass statt Zellen Variablen verglichen werden.
+
+Dabei ist es immer so aufgebaut:
+
+		[?]eq [Variable], [Vatiable2], [Sprungmarke];
+
 ####**0.8.1 Eq**
+
+Wir vergleichen zwei Variablen und prüfen auf Gleichheit, wenn dies so ist, springen wir zur Marke `marke`
+
+		defs	h, "Hallo";
+		defs  h2, "Hallo";
+
+		eq		h,h2,marke;
+		say		"Variablen sind ungleich!";
+		end;
+
+		{marke}
+			say		"Variablen sind gleich!";
+			end;
+
 ####**0.8.2 Neq**
+
+Wir vergleichen zwei Variablen und prüfen auf Ungleichheit `neq`, wenn dies so ist, springen wir zur Marke `marke`
+
+		defs	h, "Hallo";
+		defs  h2, "Hallo";
+
+		neq		h,h2,marke;
+		say		"Variablen sind gleich!";
+		end;
+
+		{marke}
+			say		"Variablen sind ungleich!";
+			end;
+
 ####**0.8.3 Geq**
+
+Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größenunterschied haben (h>h2), dann nutzen wir `geq`:
+
+		defi	h, 9;
+		defi 	h2, 3;
+
+		geq		h,h2,marke;
+		say		"H2 ist größer!";
+		end;
+
+		{marke}
+			say		"H ist größer!";
+			end;
+
 ####**0.8.4 Leq**
 
+Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größenunterschied haben (h<h2), dann nutzen wir `geq`:
+
+		defi	h, 3;
+		defi 	h2, 9;
+
+		geq		h,h2,marke;
+		say		"H2 ist kleiner!";
+		end;
+
+		{marke}
+			say		"H ist kleiner!";
+			end;
 ---------------------
 ###0.9 Werte löschen
 ####**0.9.1 Sprungmarken löschen**
+
+Es ist auch möglich Sprungmarken zu löschen:
+
+	ddm		[Name_der_Sprungmarke];
+
 ####**0.9.2 Variablen löschen**
+
+So können wir auch Variablen löschen:
+
+	ddv		[Name_der_Variable];
+
+**Danach sind diese Werte komplett WEG! Sie sind NICHT wiederherstellbar.**
 
 --------------------
 ###1.0 Beispiele
