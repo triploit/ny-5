@@ -16,6 +16,12 @@ public class LangVars
 	private List<String> gtv = new ArrayList<String>();
 	private List<Function> fs = new ArrayList<Function>();
 
+	
+	public List<Function> getFunctionList()
+	{
+		return this.fs;
+	}
+	
 	public int getGotoIntByName(String name)
 	{
 		for (int i = 0; i < gtv.size(); i++)
@@ -95,9 +101,24 @@ public class LangVars
 			if (s.equals(name))
 				return fs.get(i);
 		}
-		System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
-		System.exit(0);
+		//System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
+		//System.exit(0);
 		return (Function) (new Function("[NotFound]", "[<FUNKTION NICHT GEFUNDEN>]"));
+	}
+	
+	public boolean findFunctionByName(String name) throws IOException
+	{
+		for (int i = 0; i < fs.size(); i++)
+		{
+			String s = fs.get(i).getName();
+			//System.out.println("S: "+s);
+			
+			if (s.equals(name))
+				return true;
+		}
+		//System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
+		//System.exit(0);
+		return false;
 	}
 	
 	public List<Command> getLCommands() 

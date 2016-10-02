@@ -10,19 +10,21 @@ public class Pf
 {
 	public static void func(List<String> args) throws IOException
 	{
-		Parser p = null;
+		Parser p;
 		System.out.println("# "+args.get(1));
 		
-		try {
-			p = new Parser(args.get(1), false, "");
-		} catch (IOException e) {
-			System.out.println("[ ERR ]:[ PF ] Konnte Datei nicht finden!");
+		try 
+		{
+			p = new Parser(args.get(1), false, "");		
+			Tokenizer tok = new Tokenizer(p);
+			
+			tok.doTokenize();
+			tok.executeCode();
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("[ ERR ]:[ PF ]:[ FILE ]:[ FILENOTFOUND:"+args.get(1)+" ] Konnte Datei nicht finden!");
 			System.exit(0);
 		}
-		
-		Tokenizer tok = new Tokenizer(p);
-		
-		tok.doTokenize();
-		tok.executeCode();
 	}
 }

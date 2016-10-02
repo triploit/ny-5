@@ -4,24 +4,37 @@ import java.io.IOException;
 import java.util.List;
 
 import com.github.triploit.npp5.Main;
-import com.github.triploit.npp5.Objects.Function;
 import com.github.triploit.npp5.other.LangVars;
 
 public class RunF 
 {
 	public static void func(List<String> args) throws IOException
 	{
-		LangVars lv = Main.getLangVars();
-		Function f = new Function(lv.getFunctionByName(args.get(1)).getName(), lv.getFunctionByName(args.get(1)).getCommands());
+//		System.out.println("RUNF gefunden!");			
+//		
+//		for (int i = 0; i < args.size(); i++)
+//		{
+//			System.out.println("\t["+i+"] "+args.get(i));
+//		}
 		
-		if (f.getName().equals("[NotFound]"))
+		LangVars lv = Main.getLangVars();
+		
+		for (int i = 0; i < lv.getFunctionList().size(); i++)
 		{
-			System.out.println("[ ERR ]:[ RUNF ]:[ NOTFOUND:"+args.get(1)+" ] Funktion nicht gefunden!");
-			System.exit(0);
+			//System.out.println("["+i+"] \""+lv.getFunctionList().get(i).getName()+"\"");
+			
+			if (!lv.getFunctionList().get(i).getName().equals(args.get(1)))
+			{
+			}
+			else
+			{
+				//Function f = new Function(lv.getFunctionByName(args.get(1)).getName(), lv.getFunctionByName(args.get(1)).getCommands());
+				lv.getFunctionList().get(i).runFunction();
+				return;
+			}
 		}
-		else
-		{
-			f.runFunction();
-		}
+
+		System.out.println("[ ERR ]:[ RUNF ]:[ NOTFOUND:"+args.get(1)+" ] Funktion nicht gefunden!");
+		System.exit(0);
 	}
 }

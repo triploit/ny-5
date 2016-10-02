@@ -10,16 +10,19 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Function 
 {
 	private Parser p;
-	private Tokenizer t = new Tokenizer(p);
+	private Tokenizer t;
 	private String name;
 	private String commands;
 	//private List<String> cmds = new ArrayList<String>();
 	
 	public Function(String name, String commands) throws IOException
 	{
-		p = new Parser("", false, "");
 		this.commands = commands;
+		this.name = name;
+
+		p = new Parser("", false, "");
 		p.setRawCode(commands);
+		t = new Tokenizer(p);
 	}
 	
 	public String getName()

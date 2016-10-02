@@ -25,7 +25,7 @@ public class Tokenizer
 	
 	public void doTokenize()
 	{
-		System.out.println("[ NYPP ] Tokenize...");
+		//System.out.println("[ NYPP ] Tokenize...");
 		this.code = this.p.getRawCode().toCharArray();
 		String tmpstr = "";
 		
@@ -123,29 +123,44 @@ public class Tokenizer
 						}
 						else
 						{
+							if (code[i] != ']' && code[i+1] != ']')
 							tmpstr += code[i];
 						}
 					}
 					else
 					{
-						tmpstr += code[i];
+
+						if (code[i] == ']' && func)
+						{
+//							System.out.println("[ DEFF ] Zu!");
+							func = false;
+							i++;
+						}
+						else
+						{
+							tmpstr += code[i];
+						}
 					}
 				}
 			}
 			else
 			{
-				if (code[i] == '=' && !isStr && !kmt)
+				if (code[i] == '[' && code[i+1] == '[' && !func)
 				{
-					if (func)
-					{
-						func = false;
-						System.out.println("AUF");
-					}
-					else
-					{
-						System.out.println("ZU");
-						func = true;
-					}
+					i++;
+					i++;
+					//System.out.println("[ DEFF ] Offen!");
+					func = true;
+				}
+				
+				if (code[i] == ']' && code[i+1] == ']' && func)
+				{
+//					System.out.println("[ DEFF ] Zu!");
+					func = false;
+				}
+				else if (code[i] == ']' && code[i+1] == ']' && !func)
+				{
+					System.out.println("[ ERR ]:[ FUNC ]:[ NOTOPENED ] Es wurde keine Funktion göffnet, die geschlossen werden muss!");
 				}
 				
 				if (code[i] == '?' && !isStr)

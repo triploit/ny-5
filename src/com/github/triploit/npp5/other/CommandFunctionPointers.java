@@ -1,10 +1,5 @@
 package com.github.triploit.npp5.other;
 
-import java.util.List;
-
-import com.github.triploit.npp5.commands.*;
-import com.github.triploit.npp5.other.LangVars.*;
-
 public class CommandFunctionPointers 
 {
 	

@@ -3,6 +3,7 @@ package com.github.triploit.npp5;
 import java.io.IOException;
 
 import com.github.triploit.npp5.Objects.Command;
+import com.github.triploit.npp5.gui.GUI;
 //import com.github.triploit.npp5.other.CommandFunctionPointers;
 import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.Parser;
@@ -16,7 +17,8 @@ public class Main
 	public static void main(String[] args)
 	{		
 		
-		System.out.println(">>\tNypp Intepreter/Compiler (V16299) \n");
+		System.out.println(">>\tNypp Intepreter/Compiler (V16110) \n");
+
 		
 		if (args.length < 1)
 		{
@@ -104,6 +106,11 @@ public class Main
 					System.exit(0);
 				}
 			}
+//			else if (args[0].equalsIgnoreCase("-e") || args[0].equalsIgnoreCase("--editor"))
+//			{
+//				GUI g = new GUI(args[1]);
+//				g.startGUI();
+//			}
 			else
 			{
 				Parser p = new Parser(args[0], false, "");

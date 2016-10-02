@@ -13,7 +13,7 @@ public class Do
 	@SuppressWarnings("resource")
 	public static void func(List<String> args)
 	{
-//		System.out.println("DO gefunden!");			
+//		System.out.println("DEFF gefunden!");			
 //		
 //		for (int i = 0; i < args.size(); i++)
 //		{

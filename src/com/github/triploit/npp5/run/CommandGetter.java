@@ -23,7 +23,7 @@ public class CommandGetter
 	
 	public void execute() throws IOException
 	{
-		System.out.println("[ NYPP ] Execute...\n");
+		//System.out.println("[ NYPP ] Execute...\n");
 		int lj = 0;
 		
 		for (j = 0; j < cmds.size(); j++)

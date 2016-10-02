@@ -1,3 +1,8 @@
 {main}
-  say   "Hallo Welt!";@
+  deff  func
+    [[
+        say   "Hallo Welt!";@
+    ]]
+
+  runf    func;
   end;
