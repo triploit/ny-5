@@ -3,9 +3,8 @@ package com.github.triploit.npp5;
 import java.io.IOException;
 
 import com.github.triploit.npp5.Objects.Command;
-import com.github.triploit.npp5.gui.GUI;
-//import com.github.triploit.npp5.other.CommandFunctionPointers;
 import com.github.triploit.npp5.other.LangVars;
+import com.github.triploit.npp5.other.Updater;
 import com.github.triploit.npp5.run.Parser;
 import com.github.triploit.npp5.run.Tokenizer;
 
@@ -13,12 +12,15 @@ public class Main
 {
 	private static LangVars lv = new LangVars();
 	
-	//@SuppressWarnings("static-access")
 	public static void main(String[] args)
 	{		
 		
 		System.out.println(">>\tNypp Intepreter/Compiler (V16110) \n");
-
+		
+		Updater ud = new Updater();
+		ud.findFile("ver.txt");
+		ud.getLocalServerFile();
+		ud.equalsVersion();
 		
 		if (args.length < 1)
 		{
