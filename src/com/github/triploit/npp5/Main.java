@@ -24,7 +24,7 @@ public class Main
 		
 		if (args.length < 1)
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t>>  nypp <Datei>");
+			System.out.println("[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t>>  nypp <Datei>\n\t>>  nypp -c <EingabeDatei> <AusgabeDatei>.nct5");
 		}
 		
 		Command mov = new Command("mov", 2);
