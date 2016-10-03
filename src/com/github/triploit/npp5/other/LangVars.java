@@ -15,16 +15,6 @@ public class LangVars
 	private List<Variable> lvars = new ArrayList<Variable>();
 	private List<String> gtv = new ArrayList<String>();
 	private List<Function> fs = new ArrayList<Function>();
-	private int version = 16111;
-
-	
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
 
 	public List<Function> getFunctionList()
 	{
@@ -181,7 +171,6 @@ public class LangVars
 				return lvars.get(i);
 			}
 		}
-		
 		return (new Variable("[NotFound]", new Value("<Konnte nicht gefunden werden!>")));
 	}
 	

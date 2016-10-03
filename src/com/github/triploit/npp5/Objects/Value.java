@@ -67,7 +67,7 @@ public class Value
 		}
 		else
 		{
-			System.out.println("[ ERR ] Konnte den angegebenen Wert der Variable nicht zurückgeben!");
+			System.out.println("[ ERR ]:[ VAL ]:[ VALUE ]:[ GETVALUE ] Konnte den angegebenen Wert der Variable nicht zurückgeben!");
 			return null;
 		}
 	}
@@ -81,9 +81,18 @@ public class Value
 	{
 		return isstr;
 	}
-	
+
 	public void setNumeric(boolean b)
 	{
 		isint = b;
+	}
+	
+
+	public void setString(boolean b)
+	{
+		isstr = b;
+		
+		if (sval == null)
+		    sval = ival+"";
 	}
 }

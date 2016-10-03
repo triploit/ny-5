@@ -174,9 +174,23 @@ public class Tokenizer
 				if (code[i] == '\"')
 				{
 					if (isStr)
-						isStr = false;
+					{
+					    isStr = false;
+
+					    tmpstr = tmpstr.replace("%aX", "\"");
+					    tmpstr = tmpstr.replace("%eX", "\'");
+					    tmpstr = tmpstr.replace("%nX", "\n");
+					    tmpstr = tmpstr.replace("%tX", "\t");
+					    
+
+//					    tmpstr = tmpstr.replace("%aX", ((char) 132)+"");
+//					    tmpstr = tmpstr.replace("%uX", ((char) 129)+"");
+//					    tmpstr = tmpstr.replace("%oX", ((char) 148)+"");
+					}
 					else
-						isStr = true;
+					{
+					    isStr = true;
+					}
 				}
 				
 //				if (code[i] == '(')

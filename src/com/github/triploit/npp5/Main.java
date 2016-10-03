@@ -11,11 +11,12 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
+	private static String version = "16103";
 	
 	public static void main(String[] args)
 	{		
 		
-		System.out.println(">>\tNypp Intepreter/Compiler (V16110) \n");
+		System.out.println(">>\tNypp Intepreter/Compiler (V"+getVersion()+") \n");
 		
 		Updater ud = new Updater();
 		ud.findFile("ver.txt");
@@ -42,6 +43,14 @@ public class Main
 		Command defi = new Command("defi", 2);
 		lv.addLCommands(defi);
 		Command defs = new Command("defs", 2);
+		
+		Command deff = new Command("deff", 2);
+		lv.addLCommands(deff);
+		Command runf = new Command("runf", 1);
+		lv.addLCommands(runf);
+		
+		Command wt = new Command("wt", 1);
+		lv.addLCommands(wt);
 		
 		lv.addLCommands(defs);
 		Command prv = new Command("prv", 1);
@@ -76,11 +85,6 @@ public class Main
 		
 		Command pf = new Command("pf", 1);
 		lv.addLCommands(pf);
-		
-		Command deff = new Command("deff", 2);
-		lv.addLCommands(deff);
-		Command runf = new Command("runf", 1);
-		lv.addLCommands(runf);
 		
 //		lv.getFunctionList().add(CommandFunctionPointers._do);
 //		lv.getFunctionList().add(CommandFunctionPointers.mov);
@@ -131,6 +135,11 @@ public class Main
 		}
 	}
 	
+	public static String getVersion()
+	{
+	    return version;
+	}
+
 	public static LangVars getLangVars()
 	{
 		return lv;		

@@ -1,8 +1,11 @@
 {main}
-  deff  func
-    [[
-        say   "Hallo Welt!";@
-    ]]
+  say   "%aXHallo Welt!%aX%nX";
+  wt   3000;
+  say   "%tXBoese Mietze Katz%eX%nX";
 
-  runf    func;
+  ? %aX = "  ?
+  ? %eX = '  ?
+  ? %tX = \t ?
+  ? %tX = \n ?
+
   end;

@@ -16,8 +16,15 @@ public class Variable
 		String names = name.substring(0,1);
 		if (Main.getLangVars().isNumeric(names) || name.contains("[") || name.contains("]") || name.contains("(") || name.contains(")") || name.contains("{") || name.contains("}") || name.contains(" ") || name.contains("\"") || name.contains(",") || name.contains(";") || name.contains(":") || name.contains(".") || name.contains("!") || name.contains("§") || name.contains("$"))
 		{
+		    if (name.equals("[NotFound]"))
+		    {
+			//System.out.println("[ ERR ]:[ INP ]:[ VAR ]:[ NOTFOUND ] Variable \""+name+"\" konnte nicht gefunden werden!");
+		    }
+		    else
+		    {
 			System.out.println("[ ERR ]:[ VAR ]:[ DEFN ]:[ ILLEGALCHARACTERIN:"+name+" ] Eine Variable darf nur aus Buchstaben bestehen!");
 			System.exit(0);
+		    }
 		}
 			
 		this.name = name;
@@ -31,12 +38,18 @@ public class Variable
 	public void setValue(Value value) 
 	{
 		if (value.isNumeric() && this.value.isNumeric())
-			this.value = value;
+		{
+		    this.value = value;
+		}
 		else if (!value.isNumeric() && !this.value.isNumeric())
+		{
 			this.value = value;
+		}
 		else
+		{
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
-		System.exit(0);
+			System.exit(0);
+		}
 	}
 
 	public void setName(String name) 

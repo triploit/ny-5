@@ -5,6 +5,8 @@ import java.net.*;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
+import com.github.triploit.npp5.Main;
+
 public class Updater 
 {
 	
@@ -55,19 +57,32 @@ public class Updater
 		{
 			try
 			{
+			    if (f.getName().equalsIgnoreCase("ver.txt"))
+			    {
+				f.delete();
+				
+				BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+				bw.write((Main.getVersion()));
+				bw.close();
+			    }
+				
 			    BufferedReader bw = new BufferedReader((new FileReader(f)));
 			    BufferedReader bw2 = new BufferedReader((new FileReader(new File("verd.txt"))));
 			    
 			    String l = bw.readLine();
-			    String l2 = bw2.readLine();
+			    String line = "";
+			    String l2 = "";
+			    
+			    while ((line = bw2.readLine()) != null)
+			    {
+				l2 += line;
+			    }
 			    
 			    if (!l2.contains(l))
 			    {
 				System.out.println(
-					"[ INF ]:[ UPDATER ]:[ UPDATEFOUND ] Es wurde ein neues Update gefunden: V"+
-					l2+
-					"\n[ INF ]:[ VERSION ] Ihre Version: "+
-					l
+					"[ INF ]:[ UPDATER ]:[ UPDATEFOUND ] Es wurde ein neues Update gefunden!"//+
+					//"\n[ INF ]:[ VERSION ] Ihre Version: "+l
 					);
 			    }	
 			    else
@@ -75,6 +90,12 @@ public class Updater
 //				System.out.println("[ INF ]:[ VERSION ] Ihre Version: "+l);
 //				System.out.println("[ INF ]:[ SERVER ]:[ VERSION ] Server-Version: "+l2);
 			    }
+			    
+			    File f = new File("verd.txt");
+			    
+			    if (f.exists())
+				f.delete();
+			    
 			} catch (IOException e)
 			{
 			    System.err.println("[ WARN ]:[ UPDATER ]:[ CANTWRITE ] Konnte keine Schreibrechte für Updates erlangen!");

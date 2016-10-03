@@ -60,6 +60,10 @@ public class CommandGetter
 					{
 						Mov.func(args);
 					}
+					else if (name.equalsIgnoreCase("wt"))
+					{
+						Sleep.func(args);
+					}
 					else if (name.equalsIgnoreCase("prv"))
 					{
 						PrintValue.func(args);
