@@ -1,6 +1,6 @@
 package com.github.triploit.npp5.other;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +14,67 @@ public class LangVars
 	private List<Command> lcommands = new ArrayList<Command>();
 	private List<Variable> lvars = new ArrayList<Variable>();
 	private List<String> gtv = new ArrayList<String>();
+	private List<String> ccode = new ArrayList<String>();
 	private List<Function> fs = new ArrayList<Function>();
 
 	public List<Function> getFunctionList()
 	{
 		return this.fs;
+	}
+	
+	public void addCCode(String code)
+	{
+	    ccode.add(code+";");
+	}
+	
+	public void addCCodeRaw(String code)
+	{
+	    ccode.add(code);
+	}
+	
+	public String ccodeToString()
+	{
+	    String code = "";
+	    
+	    for (int i = 0; i < ccode.size(); i++)
+	    {
+		code += (ccode.get(i));
+	    }
+	    
+	    return code;
+	}
+	
+	public void writeFile(String filename, String txt) throws IOException
+	{
+//	    try
+//	    {		
+	    	filename = filename.replace(".ny5", ".c");
+		FileWriter fw = new FileWriter(filename);
+		BufferedWriter bw = new BufferedWriter(fw);
+		//BufferedWriter bw = new BufferedWriter(new FileWriter());
+				
+		for (int i = 0; i < ccode.size(); i++)
+		{
+		    bw.write(ccode.get(i)+"\n");
+		}
+		
+		bw.close();
+		
+//	    } 
+//	    catch (IOException e)
+//	    {
+//		System.out.println("[ DBERR ]:[ WARN ] Bitte diesen Java Error ignorieren und den Ersteller der Sprache kontaktieren!");
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	    }
+	}
+	
+	public void writeCCode()
+	{
+	    for (int i = 0; i < ccode.size(); i++)
+	    {
+		System.out.println(""+ccode.get(i));
+	    }
 	}
 	
 	public int getGotoIntByName(String name)

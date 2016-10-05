@@ -4,7 +4,7 @@
 
   defi  a2,2;
   defi  a3,3;
-  gt    p1;
+  gt  	  p1;
 
 {p1}
   say   "Du stehst in einem Wald";@

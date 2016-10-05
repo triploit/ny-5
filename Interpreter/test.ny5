@@ -4,41 +4,11 @@
 
   say   "Inp: ";
   inp   inpf;
+
   say   "Inp2: ";
   inp   inpf2;
+  add   inpf, inpf2;
 
-  defs  param1, [n];
-  defs  param2, [n];
-
-  mov   inpf, param1;
-  mov   inpf2, param2;
-
-  gt    function;
-  say   "Hat geklappt!";@
-  end;
-
-{function}
-  eq    param1,param2,fis;
-  leq   param1,param2,ika;
-  geq   param1,param2,iga;
-
-  {fun2}
-  add   param1, param2;
-  say   "Addiert?: ";
-
-  prv   param1;@
-  say   "Hat nicht geklappt!";@
-  end;
-
-{fis}
-  say   "Ist beides gleich!";@
-  gt    fun2;
-
-{ika}
-  say   "P1 ist kleiner P2!";@
-  gt    fun2;
-
-{iga}
-  say   "P1 ist größer P2!";@
-  gt    fun2;
+  say   "TOG: ";
+  prv   inpf;@
 end;

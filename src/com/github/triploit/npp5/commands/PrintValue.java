@@ -17,6 +17,7 @@ public class PrintValue
 		if (!v.getName().equals("[NotFound]"))
 		{
 			System.out.print(v.getValue().getValue());
+			lv.addCCode("cout << "+v.getName());
 		}
 		else
 		{

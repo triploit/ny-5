@@ -12,7 +12,7 @@
   prv   zahl1;@
   mov   zahl2, zwi2;
 
-  add   zahl1, zahl2;
+  add   zahl1, zahl2;  ?Hallo?
   mov   zahl1, zahl2;
 
   mov   zwi2, zahl1;

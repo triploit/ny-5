@@ -43,7 +43,8 @@ public class DefString
 		Variable v = new Variable(vname, new Value(vvalue));
 		v.setNumeric(false);
 		LangVars lv = Main.getLangVars();
-		
+
+		lv.addCCode("string "+v.getName()+" = \""+v.getValue().getValue()+"\"");
 		lv.addLVariable(v);
 	}
 }

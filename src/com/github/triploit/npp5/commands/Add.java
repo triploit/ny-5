@@ -21,10 +21,20 @@ public class Add
 			{
 				val = new Variable("NF", new Value(args.get(2)));
 				lv.getLVariableByName(var.getName()).addValue(val.getValue().getValue());
+				
+//				if (var.isNumeric())
+				    lv.addCCode(var.getName()+" += \""+val.getValue().getValue()+"\"");
+//				else
+//				    lv.addCCode("strcat("+var.getName()+", \""+val.getValue().getValue()+"\")");				    
 			}
 			else
 			{
-				lv.getLVariableByName(var.getName()).addValue(val.getValue().getValue());			
+				lv.getLVariableByName(var.getName()).addValue(val.getValue().getValue());
+				
+				//if (var.isNumeric())
+				    lv.addCCode(var.getName()+" = "+var.getName()+"+"+val.getName());		
+//				else
+//				    lv.addCCode("strcat("+var.getName()+", "+val.getName()+")");
 			}
 		}
 		else

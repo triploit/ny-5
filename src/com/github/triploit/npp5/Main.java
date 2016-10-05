@@ -11,11 +11,12 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16103";
+	private static String version = "16105";
+	private static String fname = "";
+	private static boolean cpp = false;
 	
 	public static void main(String[] args)
-	{		
-		
+	{	
 		System.out.println(">>\tNypp Intepreter/Compiler (V"+getVersion()+") \n");
 		
 		Updater ud = new Updater();
@@ -99,12 +100,13 @@ public class Main
 				System.out.println("[ NYPP ] Compiling...");
 				try
 				{
-				Parser p = new Parser(args[1], true, args[2]);
-				p.parseAll();
-				Tokenizer tok = new Tokenizer(p);
-				
-				tok.doTokenize();
-				tok.executeCode();
+        				fname = args[1];
+        				Parser p = new Parser(args[1], true, args[2]);
+        				p.parseAll();
+        				Tokenizer tok = new Tokenizer(p);
+        				
+        				tok.doTokenize();
+        				tok.executeCode();
 				}
 				catch(IndexOutOfBoundsException ex)
 				{
@@ -117,8 +119,21 @@ public class Main
 //				GUI g = new GUI(args[1]);
 //				g.startGUI();
 //			}
+			else if (args[0].equalsIgnoreCase("-cpp"))
+			{
+			    	fname = args[1];
+			    	cpp = true;
+			    	
+				Parser p = new Parser(args[1], false, "");
+				p.parseAll();
+				Tokenizer tok = new Tokenizer(p);
+				
+				tok.doTokenize();
+				tok.executeCode();
+			}
 			else
 			{
+			    	fname = args[0];
 				Parser p = new Parser(args[0], false, "");
 				p.parseAll();
 				Tokenizer tok = new Tokenizer(p);
@@ -143,5 +158,15 @@ public class Main
 	public static LangVars getLangVars()
 	{
 		return lv;		
+	}
+	
+	public static String getFileName()
+	{
+	    return fname;
+	}
+	
+	public static boolean isCpp()
+	{
+	    return cpp;
 	}
 }

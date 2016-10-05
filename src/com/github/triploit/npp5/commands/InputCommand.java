@@ -23,23 +23,27 @@ public class InputCommand
 			
 		    Value vs = new Value(in);
 			
-		    if (v.getValue().isNumeric() && v.isNumeric() && vs.isNumeric())
+		    if (v.getValue().isNumeric() && v.isNumeric() && vs.isNumeric()) // GET INT
 		    {
 			v.setValue((new Value(Integer.parseInt(in))));
+			lv.addCCode("cin >> "+v.getName());
 		    }
-		    else if (v.getValue().isString() && !v.isNumeric() && vs.isString())
+		    else if (v.getValue().isString() && !v.isNumeric() && vs.isString()) // STRING = INT
 		    {
 			v.setValue((new Value(in)));
+			lv.addCCode("cin >> "+v.getName());
 		    }
-		    else if (!v.getValue().isString() && v.isNumeric() && vs.isString())
+		    else if (!v.getValue().isString() && v.isNumeric() && vs.isString()) // INT = STRING
 		    {
 			v.setValue((new Value(in.length())));
+			lv.addCCode("cin >> "+v.getName()+"");
 		    }
-		    else if (v.getValue().isString() && !v.isNumeric() && !vs.isString())
+		    else if (v.getValue().isString() && !v.isNumeric() && !vs.isString()) // GET STRING
 		    {
 			vs.setString(true);
 			vs.setNumeric(false);
 			v.setValue(vs);
+			lv.addCCode("cin >> "+v.getName()+"");
 		    }
 		    else
 		    {

@@ -45,7 +45,8 @@ public class DefInt
 		v.setNumeric(true);
 		v.getValue().setNumeric(true);
 		LangVars lv = Main.getLangVars();
-		
+
+		lv.addCCode("int "+v.getName()+" = "+v.getValue().getValue());
 		lv.addLVariable(v);
 	}
 }
