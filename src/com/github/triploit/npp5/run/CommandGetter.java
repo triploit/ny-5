@@ -49,7 +49,7 @@ public class CommandGetter
 			if (cmds.get(j).equals("@") && (j+1) < cmds.size())
 			{
 				System.out.println("");
-				lv.addCCode("printf(\"\\n\")");
+				lv.addCCode("cout << endl");
 			}
 			    
 			for (int i = 0; i < this.lcommands.size() && (j+1) < cmds.size(); i++)
