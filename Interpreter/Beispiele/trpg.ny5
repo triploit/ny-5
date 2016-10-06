@@ -12,9 +12,10 @@
   say   "2. Norden";@
   say   "3. Süden";@
 
-  gt    incmd;
-  eq    cmd,a1,p2a;
+  say   "> ";
+  inp   cmd;
 
+  eq    cmd,a1,p2a;
   eq    cmd,a2,p2b;
   eq    cmd,a3,p2c;
 
@@ -39,7 +40,9 @@
   say   "1. Du gehst nach Norden";@
   say   "2. Du gehst nach Hause";@
 
-  gt    incmd;
+  say   "> ";
+  inp   cmd;
+  
   eq    cmd,a1,p2b;
   eq    cmd,a2,p3a;
 
@@ -56,11 +59,6 @@
   say   "wie hat man dich hierherbekommen?";@
   say   "Im Grunde war dir dies egal, du warst sicher.";@
   gt    bend;
-
-{incmd}
-  say   "> ";
-  inp   cmd;
-  return;
 
 {err}
   say   "Falsche eingabe! Spiel beendet.";@
