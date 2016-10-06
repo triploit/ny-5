@@ -8,7 +8,7 @@ import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.CommandGetter;
 
 public class Leq {
-	public static int func(List<String> args)
+	public static int func(List<String> args, boolean docc)
 	{
 
 //		System.out.println("LEQ gefunden!");
@@ -27,10 +27,15 @@ public class Leq {
 					System.out.println("[ ERR ]:[ LEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 					System.exit(0);
 				}
-				else
+				else if (docc)
+			    	    lv.addCCode("if ("+var.getName()+" <= "+val.getName()+")\n\tgoto "+marke);
+			    	else
 				{
 					if (Integer.parseInt(var.getValue().getValue().toString()) < Integer.parseInt(val.getValue().getValue().toString()))
 					{
+					    //if (docc)
+						//lv.addCCode("if ("+var.getName()+" <= "+val.getName()+")\n\tgoto "+marke);
+					   // else
 						return lv.getGotoIntByName(marke);
 					}			
 				}
@@ -54,6 +59,9 @@ public class Leq {
 				{
 					if (var.getValue().getValue().toString().length() < val.getValue().getValue().toString().length())
 					{
+					    if (docc)
+						lv.addCCode("if ("+var.getName()+".size() <= "+val.getName()+".size())\n\tgoto "+marke);
+					    else
 						return lv.getGotoIntByName(marke);
 					}			
 				}

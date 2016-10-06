@@ -9,7 +9,7 @@ import com.github.triploit.npp5.other.LangVars;
 
 public class DefString 
 {
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 //		System.out.println("DEFS gefunden!");	
 //		
@@ -43,8 +43,9 @@ public class DefString
 		Variable v = new Variable(vname, new Value(vvalue));
 		v.setNumeric(false);
 		LangVars lv = Main.getLangVars();
-
-		lv.addCCode("string "+v.getName()+" = \""+v.getValue().getValue()+"\"");
+		
+		if (docc)
+		    lv.addCCode("string "+v.getName()+" = \""+v.getValue().getValue()+"\"");
 		lv.addLVariable(v);
 	}
 }

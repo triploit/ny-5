@@ -7,12 +7,15 @@ import com.github.triploit.npp5.other.LangVars;
 
 public class DoDeleteVariable 
 {
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 		LangVars lv = Main.getLangVars();
 		
 		if (lv.findLVariableByName(args.get(1)))
 		{
+		    if (docc)
+			lv.addCCode("delete "+args.get(1));
+		    else
 			lv.delLVariableByName(args.get(1));
 		}
 		else

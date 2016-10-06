@@ -8,7 +8,7 @@ import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.CommandGetter;
 
 public class Neq {
-	public static int func(List<String> args)
+	public static int func(List<String> args, boolean docc)
 	{
 //		System.out.println("NEQ gefunden!");
 		
@@ -26,8 +26,13 @@ public class Neq {
 			}
 			else
 			{
-				if (!var.getValue().getValue().toString().equals(val.getValue().getValue().toString()))
+			    	if (docc)
+			    	    lv.addCCode("if ("+var.getName()+" != "+val.getName()+")\n\tgoto "+marke);
+			    	else if (!var.getValue().getValue().toString().equals(val.getValue().getValue().toString()))
 				{
+//				    if (docc)
+//					lv.addCCode("if ("+var.getName()+" != "+val.getName()+")\n\tgoto "+marke);
+//				    else
 					return lv.getGotoIntByName(marke);
 				}			
 			}

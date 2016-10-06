@@ -8,7 +8,7 @@ import com.github.triploit.npp5.other.LangVars;
 
 public class RunF 
 {
-	public static void func(List<String> args) throws IOException
+	public static void func(List<String> args, boolean docc) throws IOException
 	{
 //		System.out.println("RUNF gefunden!");			
 //		

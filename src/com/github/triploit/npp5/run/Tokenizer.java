@@ -38,6 +38,8 @@ public class Tokenizer
 			
 			if (tmpstr.startsWith("{") && tmpstr.endsWith("}"))
 			{
+			    if (!Main.isCpp())
+			    {
 				LangVars lv = Main.getLangVars();
 				tmpstr = tmpstr.replace("{", "").replace("}", "")+"~"+cmds.size();
 				
@@ -49,6 +51,12 @@ public class Tokenizer
 				
 				lv.addGotoValue(tmpstr);
 				tmpstr = "";
+			    }
+			    else
+			    {
+				this.cmds.add(tmpstr);
+				tmpstr = "";
+			    }
 			}
 			
 			/*
@@ -211,7 +219,7 @@ public class Tokenizer
 	public void executeCode() throws IOException
 	{
 		LangVars lv = Main.getLangVars();
-		CommandGetter getter = new CommandGetter(this.cmds, lv.getLCommands());
+		CommandGetter getter = new CommandGetter(this.cmds, lv.getLCommands(), Main.isCpp());
 		
 		getter.execute();
 	}

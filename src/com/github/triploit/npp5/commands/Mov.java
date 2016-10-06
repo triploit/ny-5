@@ -8,7 +8,7 @@ import com.github.triploit.npp5.other.LangVars;
 
 public class Mov 
 {
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 //		System.out.println("MOV gefunden!");	
 //		
@@ -21,6 +21,8 @@ public class Mov
 		Variable val = new Variable(lv.getLVariableByName(args.get(1)).getName(), lv.getLVariableByName(args.get(1)).getValue());;
 		Variable var = new Variable(lv.getLVariableByName(args.get(2)).getName(), lv.getLVariableByName(args.get(2)).getValue());
 		
+		
+		
 		if (var.getName().equals("[NotFound]"))
 		{
 			System.out.println("[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!");
@@ -28,6 +30,13 @@ public class Mov
 		}
 		else
 		{
+		    
+		    	if (docc)
+		    	{
+		    	    	lv.addCCode(var.getName()+" = "+val.getName());
+				return;
+		    	}
+		    	
 			if (val.getName().equals("[NotFound]"))
 			{
 				val = new Variable("NF", new Value(args.get(1)));

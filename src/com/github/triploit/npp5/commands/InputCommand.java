@@ -11,7 +11,7 @@ import com.github.triploit.npp5.other.LangVars;
 public class InputCommand 
 {
 	@SuppressWarnings("resource")
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 		LangVars lv = Main.getLangVars();
 		Variable v = lv.getLVariableByName(args.get(1));
@@ -19,31 +19,59 @@ public class InputCommand
 		if (!v.getName().equals("[NotFound]"))
 		{
 		    Scanner s = new Scanner(System.in);
-		    String in = s.nextLine();
+		    String in = "";
+		    
+		    if (docc == false)
+		    {
+			s = new Scanner(System.in);
+		    	in = s.nextLine();
+		    }
 			
 		    Value vs = new Value(in);
 			
 		    if (v.getValue().isNumeric() && v.isNumeric() && vs.isNumeric()) // GET INT
 		    {
-			v.setValue((new Value(Integer.parseInt(in))));
-			lv.addCCode("cin >> "+v.getName());
+			if (docc)
+			{
+				lv.addCCode("cin >> "+v.getName());
+				return;
+			}
+			else
+			    v.setValue((new Value(Integer.parseInt(in))));
 		    }
 		    else if (v.getValue().isString() && !v.isNumeric() && vs.isString()) // STRING = INT
 		    {
-			v.setValue((new Value(in)));
-			lv.addCCode("cin >> "+v.getName());
+			if (docc)
+			{
+				lv.addCCode("getline(cin, "+v.getName()+")");
+				return;
+			}
+			else
+			    v.setValue((new Value(in)));
 		    }
 		    else if (!v.getValue().isString() && v.isNumeric() && vs.isString()) // INT = STRING
 		    {
-			v.setValue((new Value(in.length())));
-			lv.addCCode("cin >> "+v.getName()+"");
+			if (docc)
+			{
+				lv.addCCode("cin >> "+v.getName());
+				return;
+			}
+			else
+			    v.setValue((new Value(in.length())));
 		    }
 		    else if (v.getValue().isString() && !v.isNumeric() && !vs.isString()) // GET STRING
 		    {
-			vs.setString(true);
-			vs.setNumeric(false);
-			v.setValue(vs);
-			lv.addCCode("cin >> "+v.getName()+"");
+			if (docc)
+			{
+				lv.addCCode("getline(cin, "+v.getName()+")");
+				return;
+			}
+			else
+			{
+        			vs.setString(true);
+        			vs.setNumeric(false);
+        			v.setValue(vs);
+			}
 		    }
 		    else
 		    {

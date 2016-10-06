@@ -8,7 +8,7 @@ import com.github.triploit.npp5.Objects.Variable;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Mul {
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 		LangVars lv = Main.getLangVars();
 		Variable var = new Variable(lv.getLVariableByName(args.get(1)).getName(), lv.getLVariableByName(args.get(1)).getValue());
@@ -19,11 +19,18 @@ public class Mul {
 			if (val.getName().equals("[NotFound]"))
 			{
 				val = new Variable("NF", new Value(args.get(2)));
-				lv.getLVariableByName(var.getName()).mulValue(val.getValue().getValue());
+
+				if (docc)
+				    lv.addCCode(var.getName()+"= "+var.getName()+" * "+val.getName());
+				else
+					lv.getLVariableByName(var.getName()).mulValue(val.getValue().getValue());
 			}
 			else
 			{
-				lv.getLVariableByName(var.getName()).mulValue(val.getValue().getValue());			
+				if (docc)
+				    lv.addCCode(var.getName()+"= "+var.getName()+" * "+val.getName());
+				else
+				    lv.getLVariableByName(var.getName()).mulValue(val.getValue().getValue());			
 			}
 		}
 		else

@@ -49,6 +49,7 @@ public class LangVars
 //	    try
 //	    {		
 	    	filename = filename.replace(".ny5", ".c");
+	    	filename = filename.replace(".nct5", ".c");
 		FileWriter fw = new FileWriter(filename);
 		BufferedWriter bw = new BufferedWriter(fw);
 		//BufferedWriter bw = new BufferedWriter(new FileWriter());

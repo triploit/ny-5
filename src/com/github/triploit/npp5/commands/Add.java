@@ -9,7 +9,7 @@ import com.github.triploit.npp5.other.LangVars;
 
 public class Add 
 {
-	public static void func(List<String> args)
+	public static void func(List<String> args, boolean docc)
 	{
 		LangVars lv = Main.getLangVars();
 		Variable var = new Variable(lv.getLVariableByName(args.get(1)).getName(), lv.getLVariableByName(args.get(1)).getValue());

@@ -9,10 +9,15 @@ import com.github.triploit.npp5.other.LangVars;
 public class Sleep
 {
     @SuppressWarnings("static-access")
-    public static void func(List<String> args)
+    public static void func(List<String> args, boolean docc)
     {
 	LangVars lv = Main.getLangVars();
 	Variable v = lv.getLVariableByName(args.get(1));
+	
+	if (docc)
+	{
+	    System.out.println("[ WARN ]:[ SLEEP ] Sleep-Befehl kann hier noch nicht verwendet werden!");
+	}
 	
 	if (!v.getName().equals("[NotFound]"))
 	{

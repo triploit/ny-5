@@ -11,7 +11,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16105";
+	private static String version = "16106b";
 	private static String fname = "";
 	private static boolean cpp = false;
 	
@@ -119,7 +119,7 @@ public class Main
 //				GUI g = new GUI(args[1]);
 //				g.startGUI();
 //			}
-			else if (args[0].equalsIgnoreCase("-cpp"))
+			else if (args[0].equalsIgnoreCase("-cc"))
 			{
 			    	fname = args[1];
 			    	cpp = true;
