@@ -11,7 +11,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16106c";
+	private static String version = "16107d";
 	private static String fname = "";
 	private static boolean cpp = false;
 	

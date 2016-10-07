@@ -14,7 +14,7 @@ public class DoDeleteVariable
 		if (lv.findLVariableByName(args.get(1)))
 		{
 		    if (docc)
-			lv.addCCode("delete "+args.get(1));
+			System.out.println("[ WARN ]:[ DELVAR ] Hier können keine Variablen gelöscht werden!");
 		    else
 			lv.delLVariableByName(args.get(1));
 		}
