@@ -28,7 +28,7 @@ public class Leq {
 					System.exit(0);
 				}
 				else if (docc)
-			    	    lv.addCCode("if ("+var.getName()+" <= "+val.getName()+")\n\tgoto "+marke);
+			    	    lv.addCCode("if ("+var.getName()+" < "+val.getName()+")\n\t\tgoto "+marke);
 			    	else
 				{
 					if (Integer.parseInt(var.getValue().getValue().toString()) < Integer.parseInt(val.getValue().getValue().toString()))

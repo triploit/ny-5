@@ -27,7 +27,7 @@ public class Neq {
 			else
 			{
 			    	if (docc)
-			    	    lv.addCCode("if ("+var.getName()+" != "+val.getName()+")\n\tgoto "+marke);
+			    	    lv.addCCode("if ("+var.getName()+" != "+val.getName()+")\n\t\tgoto "+marke);
 			    	else if (!var.getValue().getValue().toString().equals(val.getValue().getValue().toString()))
 				{
 //				    if (docc)

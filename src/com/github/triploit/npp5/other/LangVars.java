@@ -24,7 +24,7 @@ public class LangVars
 	
 	public void addCCode(String code)
 	{
-	    ccode.add(code+";");
+	    ccode.add("\t"+code+";");
 	}
 	
 	public void addCCodeRaw(String code)
