@@ -4,11 +4,15 @@
 ----------------------
 
 ####**Dieses Tutorial beinhaltet folgendes:**
+* 0.0.1 Changelog
 * 0.1 Der Interpreter
 	* 0.1.1 Eine Datei ausführen
 * 0.2 Der Compiler
-	* 0.2.1 Eine Datei kompilieren
-	* 0.2.1 Kompilierte Dateien ausführen
+	* 0.2.1 Eine Datei verschlüsseln
+	* 0.2.2 Verschlüsselte Dateien ausführen
+* 0.2.2.1 C++ Compiler
+	* 0.2.2.1.1 Eine Datei kompilieren
+	* 0.2.2.1.2 Eine Datei in Binärcode umwandeln
 * 0.3 Ausgabe
 	* 0.3.1 Say
 	* 0.3.2 Prv
@@ -41,6 +45,11 @@
 	* 1.4 Kleines Text Adventure
 
 -----------
+###0.0.1 Changelog
+
+####**Version 16107e**
+
+* **Hinzugefügt** >> Autokompilierer >> `-sys -cc [file]`
 
 ###0.1 Der Interpreter
 Der Interpreter besteht aus der Datei nypp.bat (Windows) und nypp (Linux/MacOS). Diese Dateien greifen auf die ny++.jar zurück.
@@ -66,7 +75,7 @@ Hier als Beispiel wird die Datei trpg.ny5 ausgewählt.
 
 
 ------------------------
-###0.2 Der Compiler
+###0.2 Der Obfuscator
 Der Compiler ist im Interpreter erhalten. Wir führen ihn aus wenn wir mit dem Argument `-c` oder `--compile` arbeiten:
 
 Mac/Linux:
@@ -76,6 +85,7 @@ Windows:
 
 	nypp.bat -c <EingabeDatei> <AusgabeDatei>.nct5
 Der Compiler wandelt dann die Eingabedatei, in die Ausgabedatei um. Am Ende hat man dann zwei Dateien, wobei die kompilierte Version mit `.nct5` enden sollte. In der Kompilierten Datei entsteht dann ein bytecodeartiger Text, der sehr unverständlich ist.
+
 ####**0.2.1 Eine Datei kompilieren**
 Wir geben als Argument 1 das Test Text Adventure und als Argument 2 die Ausgabedatei an:
 Mac/Linux:
@@ -93,6 +103,29 @@ Windows:
 
 	nypp.bat compiled_trpg.nct5
 Hier als Beispiel wird die Datei `compiled_trpg.nct5` ausgewählt.
+
+###0.2.2.1 C++ Compiler
+
+####**0.2.2.1.1 Eine Datei kompilieren**
+Es ist möglich, den Ny++ Code bis auf die Befehle `ddv`, `ddm` und `return` in C++ zu übersetzen.
+Dies geht folgendermaßen:
+
+Mac/Linux:
+
+	./nypp -cc test.ny5
+Windows:
+
+	nypp.bat -cc test.ny5
+Die neue C++-Datei heißt dann `test.cpp`
+
+####**0.2.2.1.2 Eine Datei in Binärcode umwandeln**
+
+Es ist möglich, unter Linux und Mac OS, mit dem G++-Compiler von GNU eine Datei sofort zu übersetzen:
+
+	./nypp -sys -cc test.ny5
+Damit wird die entstandene C++-Datei sofort kompiliert und danach gelöscht. Übrig bleibt die Binärdatei.
+
+Unter Windows müsste es auch möglich sein, wenn G++ zu `%PATH%` hinzugefügt wurde.
 
 ----------------------
 ###0.3 Ausgabe
