@@ -47,6 +47,11 @@
 -----------
 ###0.0.1 Changelog
 
+####**Version 16108e**
+
+* **Entfehrnt** >> DDM >> Sprungmarken löschen
+* **Entfehrnt** >> DDV >> Variablen löschen
+
 ####**Version 16107e**
 
 * **Hinzugefügt** >> Autokompilierer >> `-sys -cc [file]`
@@ -416,6 +421,9 @@ Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größe
 			end;
 ---------------------
 ###0.9 Werte löschen
+
+> Diese Befehle funktionieren nicht im C++ Compiler!
+
 ####**0.9.1 Sprungmarken löschen**
 
 Es ist auch möglich Sprungmarken zu löschen:

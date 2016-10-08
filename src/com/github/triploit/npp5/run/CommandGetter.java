@@ -15,6 +15,8 @@ public class CommandGetter
 	private List<String> cmds = new ArrayList<String>();
 	private boolean docc;
 //	private String lsj = "";
+	private int gti;
+	private int lgti;
 	private static int j = 0;
 	
 	public CommandGetter(List<String> cmds, List<Command> lcommands, boolean docc)
@@ -114,6 +116,9 @@ public class CommandGetter
 					    {
 						//lsj = args.get(1);
 						lv.addCCode("goto "+args.get(1));
+						//lv.addCCodeRaw("gtXcD"+gti+":");
+						gti++;
+						lgti = gti;
 					    }
 					    else
 					    {
@@ -124,9 +129,13 @@ public class CommandGetter
 					else if (name.equalsIgnoreCase("return"))
 					{
 					    if (docc)
+					    {
 						System.out.println("[ ERR ]:[ GOTO ]:[ RETURN ]:[ CANTUSE ] Kann den Return-Befehl nicht hier verwenden!");
+					    }
 					    else
+					    {
 						j = lj;
+					    }
 					}
 					else if (name.equalsIgnoreCase("say"))
 					{
@@ -145,14 +154,14 @@ public class CommandGetter
 					    if (!docc)
 						System.exit(0);
 					}
-					else if (name.equalsIgnoreCase("ddm"))
-					{
-						DoDeleteMarke.func(args, docc);
-					}
-					else if (name.equalsIgnoreCase("ddv"))
-					{
-						DoDeleteVariable.func(args, docc);
-					}
+//					else if (name.equalsIgnoreCase("ddm"))
+//					{
+//						DoDeleteMarke.func(args, docc);
+//					}
+//					else if (name.equalsIgnoreCase("ddv"))
+//					{
+//						DoDeleteVariable.func(args, docc);
+//					}
 					else if (name.equalsIgnoreCase("add"))
 					{
 						Add.func(args, docc);

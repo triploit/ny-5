@@ -11,7 +11,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16107e";
+	private static String version = "16108e";
 	private static String fname = "";
 	private static boolean cpp = false;
 	
@@ -68,10 +68,10 @@ public class Main
 		Command rtrn = new Command("return", 0);
 		lv.addLCommands(rtrn);
 		
-		Command ddm = new Command("ddm", 1);
-		lv.addLCommands(ddm);
-		Command ddv = new Command("ddv", 1);
-		lv.addLCommands(ddv);
+//		Command ddm = new Command("ddm", 1);
+//		lv.addLCommands(ddm);
+//		Command ddv = new Command("ddv", 1);
+//		lv.addLCommands(ddv);
 		
 		Command div = new Command("div", 2);
 		lv.addLCommands(div);
