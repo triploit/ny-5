@@ -132,6 +132,10 @@ public class Main
 				tok.doTokenize();
 				tok.executeCode();
 			}
+			else if (args[0].equalsIgnoreCase("-u"))
+			{
+			    //https://raw.githubusercontent.com/user/repository/branch/filename
+			}
 			else if (args[0].equalsIgnoreCase("-sys"))
 			{
         			if (args[1].equalsIgnoreCase("-cc"))
