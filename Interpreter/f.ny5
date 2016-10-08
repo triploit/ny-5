@@ -1,7 +1,0 @@
-{main}
-  defi  i, [n];
-  mov   _rnd, i;
-
-{output}
-  say   "Random: ";
-  prv   i;@
