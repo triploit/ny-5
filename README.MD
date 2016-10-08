@@ -50,8 +50,8 @@
 
 ####**Version 16108e**
 
-* **Entfehrnt** >> DDM >> Sprungmarken löschen
-* **Entfehrnt** >> DDV >> Variablen löschen
+* **Entfernt** >> DDM >> Sprungmarken löschen
+* **Entfernt** >> DDV >> Variablen löschen
 
 ####**Version 16107e**
 
