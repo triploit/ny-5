@@ -17,15 +17,15 @@
 	* 0.3.1 Say
 	* 0.3.2 Prv
 * 0.4 Variablen
-	* 0.3.1 Strings
-	* 0.3.2 Integer
+	* 0.4.1 Strings
+	* 0.4.2 Integer
 * 0.5 Eingabe
 * 0.6 Werte verändern
-	* 0.4.1 Add
-	* 0.4.2 Rem
-	* 0.4.3 Div
-	* 0.4.4 Mul
-	* 0.4.5 Del
+	* 0.6.1 Add
+	* 0.6.2 Rem
+	* 0.6.3 Div
+	* 0.6.4 Mul
+	* 0.6.5 Del
 * 0.7 Sprungmarken
 	* 0.7.1 Deklaration
 	* 0.7.2 Aufrufen
@@ -52,6 +52,10 @@
 ####**Version 16107e**
 
 * **Hinzugefügt** >> Autokompilierer >> `-sys -cc [file]`
+
+####**Version 16103**
+
+* **Hinzugefügt** >> String >> Verbotene Zeichen schreiben >> 0.4.1.1
 
 ###0.1 Der Interpreter
 Der Interpreter besteht aus der Datei nypp.bat (Windows) und nypp (Linux/MacOS). Diese Dateien greifen auf die ny++.jar zurück.
@@ -168,6 +172,15 @@ Beispiel:
 
 	defs s, "Hallo Welt!";
 Damit wird eine Varibale `s` mit dem Wert `Hallo Welt` erstellt.
+
+Es gibt verschiedene Zeichen die in Strings ersetzt werden:
+
+* `%aX` >> `"`
+* `%eX` >> `'`
+* `%tX` >> `\t`
+*	`%nX` >> `\n`
+
+Das heißt aus `%aXHallo Welt%aX` wird `"Hallo Welt"`. Praktisch.
 
 ####**0.4.2 Integer**
 
