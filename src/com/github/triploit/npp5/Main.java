@@ -11,7 +11,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16107d";
+	private static String version = "16107e";
 	private static String fname = "";
 	private static boolean cpp = false;
 	
@@ -130,6 +130,40 @@ public class Main
 				
 				tok.doTokenize();
 				tok.executeCode();
+			}
+			else if (args[0].equalsIgnoreCase("-sys"))
+			{
+        			if (args[1].equalsIgnoreCase("-cc"))
+        			{
+        			    	fname = args[2];
+        			    	String cppfname = fname.replace(".ny5", ".cpp").replace(".nct5", ".cpp");
+        			    	String binname = cppfname.replace(".cpp", "");
+        				cpp = true;
+        				    	
+        				Parser p = new Parser(args[2], false, "");
+        				p.parseAll();
+        				Tokenizer tok = new Tokenizer(p);
+        					
+        				tok.doTokenize();
+        				tok.executeCode();
+        				
+        				Process cc = Runtime.getRuntime().exec("g++ -o "+binname+" "+cppfname);
+        				Process rm = Runtime.getRuntime().exec("rm "+cppfname);
+        				
+        			        try
+					{
+					    System.out.println("[ SYS ]:[ COMPILE ]:[ SOURE ]:[ G++ ] Kompiliere...");
+					    cc.waitFor();
+					    System.out.println("[ FERTIG ]\n\n[ SYS ]:[ COMPILE ]:[ SOURE ] Entferne Datei...");
+					    rm.waitFor();
+					    System.out.println("[ FERTIG ]");
+					} catch (InterruptedException e)
+					{
+					    // TODO Auto-generated catch block
+					    e.printStackTrace();
+					}
+					
+        			}
 			}
 			else
 			{
