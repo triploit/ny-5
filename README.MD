@@ -18,7 +18,9 @@
 	* 0.3.2 Prv
 * 0.4 Variablen
 	* 0.4.1 Strings
+		* 0.4.1.1 Weiteres zu Strings
 	* 0.4.2 Integer
+		* 0.4.2.1 Random
 * 0.5 Eingabe
 * 0.6 Werte verändern
 	* 0.6.1 Add
@@ -44,9 +46,15 @@
 -----------
 ###0.0.1 Changelog
 
+####**Version 16108h**
+
+* **Hinzugefügt** >> Interpreter >> neue Parameter
+* **BugFix** >> Variable >> Falscher-Typ-Error
+* **Hinzugefügt** >> System-Variable >> Random >> 0.4.2.1
+
 ####**Version 16108g**
 
-* **BugFix** >> Compieler >> Sys Parameter gefixt, danke an NetLamp :)!
+* **BugFix** >> Compieler >> `-sys` Parameter gefixt, danke an NetLamp :)!
 
 ####**Version 16108e**
 
@@ -77,10 +85,10 @@ Windows:
 Um eine Datei auszuführen, geben wir sie einfach als erstes Argument an:
 Mac/Linux:
 
-	./nypp	trpg.ny5
+	./nypp -r	trpg.ny5
 Windows:
 
-	nypp.bat trpg.ny5
+	nypp.bat -r trpg.ny5
 Hier als Beispiel wird die Datei trpg.ny5 ausgewählt.
 
 
@@ -108,10 +116,10 @@ Windows:
 Um eine verschlüsselte Datei auszuführen, geben wir sie einfach als erstes Argument an, so als wäre sie gar nicht kompiliert worden:
 Mac/Linux:
 
-	./nypp	compiled_trpg.nct5
+	./nypp -r compiled_trpg.nct5
 Windows:
 
-	nypp.bat compiled_trpg.nct5
+	nypp.bat -r compiled_trpg.nct5
 Hier als Beispiel wird die Datei `compiled_trpg.nct5` ausgewählt.
 
 ###0.2.2.1 C++ Compiler
@@ -194,6 +202,10 @@ Integer, werden genau wie Strings deklariert, bloß dass wir statt `defs`, `defi
 
 	defi i, 7;
 Hier wurde die Variable `i` mit dem Wert `7` erstellt.
+
+**0.4.2.1 Random**
+
+Es ist auch möglich in Ny++5 zufällig generierte Zahlen zu erzeugen. Diese Zufallszahlen, sind in der Variable `_rnd` gespeichert und können von da aus abgerufen werden.
 
 ####**0.4.3 Leere Variablen**
 

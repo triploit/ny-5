@@ -23,7 +23,7 @@ public class Mov
 		
 		
 		
-		if (var.getName().equals("[NotFound]"))
+		if (var.getName().equals("[NotFound]") || !lv.findLVariableByName(var.getName()))
 		{
 			System.out.println("[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!");
 			System.exit(0);
@@ -37,10 +37,15 @@ public class Mov
 				return;
 		    	}
 		    	
-			if (val.getName().equals("[NotFound]"))
+			if (val.getName().equals("[NotFound]")  || !lv.findLVariableByName(val.getName()))
 			{
 				val = new Variable("NF", new Value(args.get(1)));
-				lv.getLVariableByName(args.get(2)).setValue(val.getValue());
+				
+				if (!lv.getLVariableByName(args.get(2)).testValue(val.getValue()))
+				{
+				    System.out.println("\n\t[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!\n>> ODER <<\n\t"+"[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+				    System.exit(0);
+				}
 			}
 			else
 			{

@@ -19,6 +19,12 @@ public class Mul {
 			if (val.getName().equals("[NotFound]"))
 			{
 				val = new Variable("NF", new Value(args.get(2)));
+				
+				if (!lv.getLVariableByName(args.get(2)).testValue(val.getValue()))
+				{
+				    System.out.println("\n\t[ ERR ]:[ MUL ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!\n>> ODER <<\n\t"+"[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+				    System.exit(0);
+				}
 
 				if (docc)
 				    lv.addCCode(var.getName()+"= "+var.getName()+" * "+val.getName());

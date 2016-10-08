@@ -13,11 +13,13 @@ public class CommandGetter
 {
 	private List<Command> lcommands = new ArrayList<Command>();
 	private List<String> cmds = new ArrayList<String>();
+	
 	private boolean docc;
-//	private String lsj = "";
+	private static int j = 0;
+	
 	private int gti;
 	private int lgti;
-	private static int j = 0;
+	
 	
 	public CommandGetter(List<String> cmds, List<Command> lcommands, boolean docc)
 	{
@@ -29,7 +31,9 @@ public class CommandGetter
 	public void execute() throws IOException
 	{
 		LangVars lv = Main.getLangVars();
-		lv.addCCodeRaw("#include <stdio.h>\n#include <stdlib.h>\n#include <iostream>\n#include <string.h>\nusing namespace std;\n\nint main()\n{\n");
+		lv.addCCodeRaw("#include <stdio.h>\n#include <stdlib.h>\n#include <time.h>\n#include <iostream>\n#include <string.h>\nusing namespace std;\n\nint main()\n{");
+		lv.addCCode("srand(time(NULL));\n\tint _rnd = rand() % 10000");
+		
 		//System.out.println("[ NYPP ] Execute...\n");
 		int lj = 0;
 		
@@ -40,6 +44,7 @@ public class CommandGetter
 			
 			if (cmds.get(j).startsWith("{") && cmds.get(j).endsWith("}"))
 			{
+			    lv.addCCodeRaw(" ");
 			    lv.addCCodeRaw(cmds.get(j).replace("}", "").replace("{", "")+":");
 			}
 //			System.out.println("[ CMD ] "+cmds.get(j));
@@ -54,6 +59,14 @@ public class CommandGetter
 				lv.addCCode("cout << endl");
 			}
 			    
+//			int __rnd;
+//			Random r = new Random();
+//			__rnd = r.nextInt((10000 - 1) + 1) + 1;
+//			lv.getLVariableByName("_rnd").setValue(new Value(__rnd));
+//			
+//			lv.getLVariableByName("_rnd").getValue().setNumeric(true);
+//			lv.getLVariableByName("_rnd").getValue().setString(false);
+			
 			for (int i = 0; i < this.lcommands.size() && (j+1) < cmds.size(); i++)
 			{				
 			    

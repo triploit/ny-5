@@ -21,6 +21,12 @@ public class Mod
 			{
 				val = new Variable("NF", new Value(args.get(2)));
 				
+				if (!lv.getLVariableByName(args.get(2)).testValue(val.getValue()))
+				{
+				    System.out.println("\n\t[ ERR ]:[ MOD ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!\n>> ODER <<\n\t"+"[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+				    System.exit(0);
+				}
+				
 				if (docc)
 				    lv.addCCode(var.getName()+"= "+var.getName()+" % "+val.getName());
 				else

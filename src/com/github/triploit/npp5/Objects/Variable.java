@@ -39,16 +39,32 @@ public class Variable
 	{
 		if (value.isNumeric() && this.value.isNumeric())
 		{
-		    this.value = value;
+		    	this.value = value;
 		}
-		else if (!value.isNumeric() && !this.value.isNumeric())
+		else if (value.isString() && this.value.isString())
 		{
 			this.value = value;
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");			
 			System.exit(0);
+		}
+	}
+	
+	public boolean testValue(Value value) 
+	{
+		if (value.isNumeric() && this.value.isNumeric())
+		{
+		    	return true;
+		}
+		else if (value.isString() && this.value.isString())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
