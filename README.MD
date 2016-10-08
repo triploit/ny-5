@@ -46,7 +46,7 @@
 
 ####**Version 16108g**
 
-* **Entfehrnt** >> Compieler >> Sys Parameter gefixt, danke an NetLamp :)!
+* **BugFix** >> Compieler >> Sys Parameter gefixt, danke an NetLamp :)!
 
 ####**Version 16108e**
 
