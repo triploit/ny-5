@@ -55,7 +55,7 @@
 
 ####**Version 16103**
 
-* **Hinzugefügt** >> String >> Verbotene Zeichen schreiben >> 0.4.1.1
+* **Hinzugefügt** >> String >> Verbotene Zeichen schreiben >> 0.4.1.1 Weiteres zu Strings
 
 ###0.1 Der Interpreter
 Der Interpreter besteht aus der Datei nypp.bat (Windows) und nypp (Linux/MacOS). Diese Dateien greifen auf die ny++.jar zurück.
@@ -172,6 +172,8 @@ Beispiel:
 
 	defs s, "Hallo Welt!";
 Damit wird eine Varibale `s` mit dem Wert `Hallo Welt` erstellt.
+
+**0.4.1.1 Weiteres zu Strings**
 
 Es gibt verschiedene Zeichen die in Strings ersetzt werden:
 
