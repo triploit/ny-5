@@ -76,7 +76,7 @@ Hier als Beispiel wird die Datei trpg.ny5 ausgewählt.
 
 ------------------------
 ###0.2 Der Obfuscator
-Der Compiler ist im Interpreter erhalten. Wir führen ihn aus wenn wir mit dem Argument `-c` oder `--compile` arbeiten:
+Der Obfuscator ist im Interpreter erhalten. Wir führen ihn aus wenn wir mit dem Argument `-c` oder `--compile` arbeiten:
 
 Mac/Linux:
 
@@ -84,9 +84,9 @@ Mac/Linux:
 Windows:
 
 	nypp.bat -c <EingabeDatei> <AusgabeDatei>.nct5
-Der Compiler wandelt dann die Eingabedatei, in die Ausgabedatei um. Am Ende hat man dann zwei Dateien, wobei die kompilierte Version mit `.nct5` enden sollte. In der Kompilierten Datei entsteht dann ein bytecodeartiger Text, der sehr unverständlich ist.
+Der Obfuscator wandelt dann die Eingabedatei, in die Ausgabedatei um. Am Ende hat man dann zwei Dateien, wobei die kompilierte Version mit `.nct5` enden sollte. In der Kompilierten Datei entsteht dann ein bytecodeartiger Text, der sehr unverständlich ist.
 
-####**0.2.1 Eine Datei kompilieren**
+####**0.2.1 Eine Datei verschlüsseln**
 Wir geben als Argument 1 das Test Text Adventure und als Argument 2 die Ausgabedatei an:
 Mac/Linux:
 
@@ -94,8 +94,8 @@ Mac/Linux:
 Windows:
 
 	nypp.bat -c trpg.ny5 compiled_trpg.nct5
-####**0.2.2 Eine kompilierte Datei ausführen**
-Um eine kompilierte Datei auszuführen, geben wir sie einfach als erstes Argument an, so als wäre sie gar nicht kompiliert worden:
+####**0.2.2 Eine verschlüsselte Datei ausführen**
+Um eine verschlüsselte Datei auszuführen, geben wir sie einfach als erstes Argument an, so als wäre sie gar nicht kompiliert worden:
 Mac/Linux:
 
 	./nypp	compiled_trpg.nct5
