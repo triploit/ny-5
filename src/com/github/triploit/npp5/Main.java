@@ -11,7 +11,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16108e";
+	private static String version = "16108f";
 	private static String fname = "";
 	private static boolean cpp = false;
 	
@@ -157,7 +157,8 @@ public class Main
 					    System.out.println("[ FERTIG ]\n\n[ SYS ]:[ COMPILE ]:[ SOURE ] Entferne Datei...");
 					    rm.waitFor();
 					    System.out.println("[ FERTIG ]");
-					} catch (InterruptedException e)
+					} 
+        			        catch (InterruptedException e)
 					{
 					    // TODO Auto-generated catch block
 					    e.printStackTrace();
