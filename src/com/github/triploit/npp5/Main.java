@@ -1,5 +1,6 @@
 package com.github.triploit.npp5;
 
+import java.io.File;
 import java.io.IOException;
 
 import com.github.triploit.npp5.Objects.Command;
@@ -11,7 +12,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "16108f";
+	private static String version = "16108g";
 	private static String fname = "";
 	private static boolean cpp = false;
 	
@@ -146,16 +147,18 @@ public class Main
         					
         				tok.doTokenize();
         				tok.executeCode();
-        				
-        				Process cc = Runtime.getRuntime().exec("g++ -o "+binname+" "+cppfname);
-        				Process rm = Runtime.getRuntime().exec("rm "+cppfname);
+
         				
         			        try
 					{
+            				    Process cc = Runtime.getRuntime().exec("g++ -o "+binname+" "+cppfname);
 					    System.out.println("[ SYS ]:[ COMPILE ]:[ SOURE ]:[ G++ ] Kompiliere...");
 					    cc.waitFor();
+
 					    System.out.println("[ FERTIG ]\n\n[ SYS ]:[ COMPILE ]:[ SOURE ] Entferne Datei...");
-					    rm.waitFor();
+					    File f = new File(cppfname);
+					    f.delete();
+					    
 					    System.out.println("[ FERTIG ]");
 					} 
         			        catch (InterruptedException e)

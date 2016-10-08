@@ -44,6 +44,10 @@
 -----------
 ###0.0.1 Changelog
 
+####**Version 16108g**
+
+* **Entfehrnt** >> Compieler >> Sys Parameter gefixt, danke an NetLamp :)!
+
 ####**Version 16108e**
 
 * **Entfehrnt** >> DDM >> Sprungmarken löschen
