@@ -35,9 +35,6 @@
 	* 0.8.2 Neq
 	* 0.8.3 Geq
 	* 0.8.4 Leq
-* 0.9 Werte löschen
-	* 0.9.1 Sprungmarken löschen
-	* 0.9.2 Variablen löschen
 * 1.0 Beispiele
 	* 1.1 Fibonacci Zahlenfolge
 	* 1.2 Fakultaet einer Zahl berechnen
@@ -358,7 +355,7 @@ In Ny++5 kann man genauso wie in Ny++ Werte vergleichen. Die Funktionen sind kom
 
 Dabei ist es immer so aufgebaut:
 
-		[?]eq [Variable], [Vatiable2], [Sprungmarke];
+		[?]eq [Variable], [Variable2], [Sprungmarke];
 
 ####**0.8.1 Eq**
 
@@ -419,24 +416,6 @@ Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größe
 		{marke}
 			say		"H ist kleiner!";
 			end;
----------------------
-###0.9 Werte löschen
-
-> Diese Befehle funktionieren nicht im C++ Compiler!
-
-####**0.9.1 Sprungmarken löschen**
-
-Es ist auch möglich Sprungmarken zu löschen:
-
-	ddm		[Name_der_Sprungmarke];
-
-####**0.9.2 Variablen löschen**
-
-So können wir auch Variablen löschen:
-
-	ddv		[Name_der_Variable];
-
-**Danach sind diese Werte komplett WEG! Sie sind NICHT wiederherstellbar.**
 
 --------------------
 ###1.0 Beispiele
