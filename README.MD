@@ -54,7 +54,7 @@
 
 ####**Version 16108g**
 
-* **BugFix** >> Compieler >> `-sys` Parameter gefixt, danke an NetLamp :)!
+* **BugFix** >> Compiler >> `-sys` Parameter gefixt, danke an NetLamp :)!
 
 ####**Version 16108e**
 
