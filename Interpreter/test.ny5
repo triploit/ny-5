@@ -11,4 +11,7 @@
 
   say   "TOG: ";
   prv   inpf;@
+
+  mov   3, _fos;
+  prv   _fos;@
 end;
