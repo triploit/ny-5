@@ -120,6 +120,9 @@ public class Init
 	fos.getValue().setString(false);
 	
 	
+	rnd.setWritable(false);
+	fos.setWritable(false);
+	
 	lv.addLVariable(rnd);
 	lv.addLVariable(fos);
     }

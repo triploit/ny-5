@@ -21,6 +21,7 @@
 		* 0.4.1.1 Weiteres zu Strings
 	* 0.4.2 Integer
 		* 0.4.2.1 Random
+		* 0.4.2.2 Random
 * 0.5 Eingabe
 * 0.6 Werte verändern
 	* 0.6.1 Add
@@ -31,7 +32,6 @@
 * 0.7 Sprungmarken
 	* 0.7.1 Deklaration
 	* 0.7.2 Aufrufen
-	* 0.7.3 Return
 * 0.8 Werte vergleichen
 	* 0.8.1 Eq
 	* 0.8.2 Neq
@@ -45,6 +45,13 @@
 
 -----------
 ###0.0.1 Changelog
+
+####**Version 16109h**
+
+* **Entfernt** >> Return >> Zum letzten Sprung zurückkehren
+* **Verbessert** >> Error Ausgabe zeigt Zeilennummer an >> [ (Zeile):(Stelle) ] [ ERR ]:[ ... ]
+* **Hinzugefügt** >> System-Variable >> FOS >> 0.4.2.2
+
 
 ####**Version 16108h**
 
@@ -207,6 +214,17 @@ Hier wurde die Variable `i` mit dem Wert `7` erstellt.
 
 Es ist auch möglich in Ny++5 zufällig generierte Zahlen zu erzeugen. Diese Zufallszahlen, sind in der Variable `_rnd` gespeichert und können von da aus abgerufen werden.
 
+**0.4.2.2 FOS**
+
+Ny++5 bietet eine Möglichkeit das Betriebssystem zu ermitteln. Dies geht mit der System-Variable `_fos`, die auch im Compiler funktioniert. Sie beinhaltet eine Zahl, wo jede Zahl für ein Betriebssystem steht:
+
+* `1` >> Windows
+* `2` >> MacOS und FreeBSD
+* `3` >> Linux/Unix
+* `4` >> Anderes
+
+**NOTIZ: System-Variablen sind nicht beschreibbar!**
+
 ####**0.4.3 Leere Variablen**
 
 Manchmal brauchen wir auch leere Variablen, diese deklarierenb wir so:
@@ -361,22 +379,6 @@ Wir deklariern Sprungmarken wie in Ny++, mit Klammer-Auf und Klammer-Zu:
 Wenn eine Sprungmarke deklariert wurde, ist es möglich von jeder Stelle des Codes zu dieser Marke zu springen:
 
 	gt marke;
-
-#### **0.7.3 Return**
-
-Es hier etwas ganz tolles möglich, das der Sprache noch viele Male das Leben retten wird. Der Befehl `return` springt zum letzten aufgerufenen Sprung:
-
-	{main}
-		say	"Hallo ";
-		gt  marke;
-		say	"!";
-		end;
-
-	{marke}
-		say "Welt";
-		return;
-
-Return springt zum letzten `gt` und führt von da aus die nächsten Befehle aus.
 
 
 ----------------------

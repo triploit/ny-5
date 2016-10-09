@@ -1,6 +1,7 @@
 package com.github.triploit.npp5.Objects;
 
 import com.github.triploit.npp5.Main;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Variable 
@@ -9,7 +10,18 @@ public class Variable
 	private String name;
 	private Value value;	
 	private boolean num;
+	private boolean writable = true;
 	
+	public boolean isWritable()
+	{
+	    return writable;
+	}
+
+	public void setWritable(boolean writable)
+	{
+	    this.writable = writable;
+	}
+
 	@SuppressWarnings("static-access")
 	public Variable(String name, Value v)
 	{
@@ -37,6 +49,8 @@ public class Variable
 
 	public void setValue(Value value) 
 	{
+	    if (writable)
+	    {
 		if (value.isNumeric() && this.value.isNumeric())
 		{
 		    	this.value = value;
@@ -50,10 +64,17 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");			
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public boolean testValue(Value value) 
 	{
+	    if (writable)
+	    {
 		if (value.isNumeric() && this.value.isNumeric())
 		{
 		    	return true;
@@ -66,6 +87,12 @@ public class Variable
 		{
 			return false;
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+		return false;
+	    }
 	}
 
 	public void setName(String name) 
@@ -85,12 +112,21 @@ public class Variable
 	
 	public void setNumeric(boolean b)
 	{
+	    if (writable)
+	    {
 		num = b;
 		value.setNumeric(b);
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public void addValue(Object o)
 	{
+	    if (writable)
+	    {
 		int vi;
 		
 		String vs;
@@ -111,10 +147,17 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ ADDVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public void remValue(Object o)
 	{
+	    if (writable)
+	    {
 		int vi;
 		
 		String vs;
@@ -135,10 +178,17 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ REMVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public void mulValue(Object o)
 	{
+	    if (writable)
+	    {
 		int vi;
 		String sc = o.toString();		
 		
@@ -152,10 +202,17 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ MULVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public void modValue(Object o)
 	{
+	    if (writable)
+	    {
 		int vi;
 		String sc = o.toString();		
 		
@@ -169,10 +226,17 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ MODVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 	
 	public void divValue(Object o)
 	{
+	    if (writable)
+	    {
 		int vi;
 		String sc = o.toString();		
 		
@@ -186,6 +250,11 @@ public class Variable
 			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ DIVVALUE ] Der Wert \""+sc+"\" passt nicht zum Typ der Variable!");
 			System.exit(0);
 		}
+	    }
+	    else
+	    {
+		Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ NAME:"+name+" ]:[ SETVALUE ] Diese Variable kann nicht bearbeitet werden!");
+	    }
 	}
 
 }
