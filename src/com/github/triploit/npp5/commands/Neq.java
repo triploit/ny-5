@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.CommandGetter;
 
@@ -21,7 +22,7 @@ public class Neq {
 		{
 			if (val.getName().equals("[NotFound]"))
 			{
-				System.out.println("[ ERR ]:[ EQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+				Err.printErr("[ ERR ]:[ NEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 				System.exit(0);
 			}
 			else
@@ -39,7 +40,7 @@ public class Neq {
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ REM ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			Err.printErr("[ ERR ]:[ REM ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 			System.exit(0);
 		}
 		

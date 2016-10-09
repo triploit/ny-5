@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.github.triploit.npp5.other.CompileCode;
+import com.github.triploit.npp5.other.Err;
 
 @SuppressWarnings("resource")
 public class Parser 
@@ -16,13 +17,15 @@ public class Parser
 	private String code;
 	private String filename;
 	private boolean doenc;
+	private boolean rfne;
 	private String outfile;
 
-	public Parser(String filename, boolean doenc, String outfile) throws IOException
+	public Parser(String filename, boolean doenc, String outfile, boolean rfne) throws IOException
 	{
 		this.doenc = doenc;
 		this.outfile = outfile;
 		this.filename = filename;
+		this.rfne = rfne;
 	}
 	
 	public String getRawCode()
@@ -37,10 +40,13 @@ public class Parser
 	
 	public void parseAll() throws IOException
 	{
-		if (!filename.endsWith(".ny5") && !filename.endsWith(".nct5"))
+		if (this.rfne)
 		{
-			System.out.println("[ ERR ]:[ PARSER ]:[ FILE ]:[ FALSENAME ] Die Datei muss auf \".ny5\"/\".nct5\" enden!");
+		    if ((!filename.endsWith(".ny5") && !filename.endsWith(".nct5")))
+		    {
+			Err.printErr("[ ERR ]:[ PARSER ]:[ FILE ]:[ FALSENAME ] Die Datei muss auf \".ny5\"/\".nct5\" enden!");
 			System.exit(0);
+		    }
 		}
 		
 		code = "";
@@ -91,7 +97,7 @@ public class Parser
 		} 
 		catch (FileNotFoundException e) 
 		{
-			System.out.println("[ ERR ]:[ PARSER ]:[ FILE ]:[ NOTFOUND] Konnte Datei nicht finden!");
+			Err.printErr("[ ERR ]:[ PARSER ]:[ FILE ]:[ NOTFOUND] Konnte Datei nicht finden!");
 			System.exit(0);
 		}
 	}

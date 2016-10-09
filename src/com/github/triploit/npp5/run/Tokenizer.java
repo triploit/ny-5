@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.triploit.npp5.Main;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Tokenizer 
@@ -23,6 +24,7 @@ public class Tokenizer
 		return this.p;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void doTokenize()
 	{
 		//System.out.println("[ NYPP ] Tokenize...");
@@ -45,8 +47,14 @@ public class Tokenizer
 				
 				if (lv.findGotoByName(tmpstr))
 				{
-					System.out.println("[ ERR ]:[ GOTO ]:[ EXISTS:"+tmpstr+" ] Sprungmarke existiert bereits!");
+					Err.printErr("[ ERR ]:[ GOTO ]:[ EXISTS:"+tmpstr+" ] Sprungmarke existiert bereits!");
 					System.exit(0);
+				}
+				
+				String name = tmpstr;				
+				if (Main.getLangVars().isNumeric(name) || name.contains("[") || name.contains(" ") || name.contains("+") || name.contains("*") || name.contains("/") || name.contains("#") || name.contains("'") || name.contains("\"") || name.contains("<") || name.contains(">") || name.contains("|") || name.contains("]") || name.contains("(") || name.contains(")") || name.contains("{") || name.contains("}") || name.contains(" ") || name.contains("\"") || name.contains(",") || name.contains(";") || name.contains(":") || name.contains(".") || name.contains("!") || name.contains("§") || name.contains("$"))
+				{
+				    Err.printErr("[ ERR ]:[ GOTO ]:[ DEFG ]:[ ILLEGALCHARACTERIN:"+name+" ] Eine Variable darf nur aus Buchstaben und Zahlen bestehen!");
 				}
 				
 				lv.addGotoValue(tmpstr);
@@ -87,6 +95,21 @@ public class Tokenizer
 								tmpstr += code[i];
 								this.cmds.add(tmpstr);
 								tmpstr = "";
+							}
+							else if (code[i] == '\n')
+							{
+							    	if (tmpstr.startsWith("\"") && tmpstr.endsWith("\""))
+        								tmpstr = tmpstr.substring(1, tmpstr.length()-1);
+        							
+        							try	{ if (tmpstr != null) this.cmds.add(tmpstr); }
+        							catch (NullPointerException ex) {}
+        						
+        							//System.out.println("[ CMD ] "+tmpstr+ "\t[ SIZE ]  [  "+cmds.size()+"\t ]");
+        							tmpstr = "";
+        							
+        							tmpstr = "+[DN3:F0:1NE7";
+        							this.cmds.add(tmpstr);
+        							tmpstr = "";
 							}
 							else if (code[i] == '@')
 							{
@@ -168,7 +191,7 @@ public class Tokenizer
 				}
 				else if (code[i] == ']' && code[i+1] == ']' && !func)
 				{
-					System.out.println("[ ERR ]:[ FUNC ]:[ NOTOPENED ] Es wurde keine Funktion göffnet, die geschlossen werden muss!");
+					Err.printErr("[ ERR ]:[ FUNC ]:[ NOTOPENED ] Es wurde keine Funktion göffnet, die geschlossen werden muss!");
 				}
 				
 				if (code[i] == '?' && !isStr)

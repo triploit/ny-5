@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Do 
@@ -48,14 +49,14 @@ public class Do
 				}
 				else
 				{
-					System.out.println("[ ERR ] Die Eingabe hat nicht zum Typ der Variable gepasst!");
+					Err.printErr("[ ERR ] Die Eingabe hat nicht zum Typ der Variable gepasst!");
 					System.exit(0);
 				}
 			}
 		}
 		else
 		{
-			System.out.println("[ OUT ] Variable \""+args.get(2)+"\" konnte nicht gefunden werden!");
+			Err.printErr("[ ERR ]:[ OUT ] Variable \""+args.get(2)+"\" konnte nicht gefunden werden!");
 			System.exit(0);
 		}
 		

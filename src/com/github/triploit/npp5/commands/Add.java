@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Add 
@@ -23,7 +24,8 @@ public class Add
 				
 				if (!lv.getLVariableByName(args.get(2)).testValue(val.getValue()))
 				{
-				    System.out.println("\n\t[ ERR ]:[ ADD ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!\n>> ODER <<\n\t"+"[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
+				    Err.printErr("[ ERR ]:[ ADD ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!\n\t>> ODER <<\n");
+				    Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");
 				    System.exit(0);
 				}
 				
@@ -46,7 +48,7 @@ public class Add
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ ADD ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			Err.printErr("[ ERR ]:[ ADD ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 			System.exit(0);
 		}
 	}

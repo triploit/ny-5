@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.github.triploit.npp5.Main;
+import com.github.triploit.npp5.Objects.Function;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class RunF 
@@ -23,18 +25,18 @@ public class RunF
 		{
 			//System.out.println("["+i+"] \""+lv.getFunctionList().get(i).getName()+"\"");
 			
-			if (!lv.getFunctionList().get(i).getName().equals(args.get(1)))
+			if (lv.getFunctionList().get(i).getName().equals(args.get(1)))
 			{
+			    Function f = lv.getFunctionList().get(i);
+			    f.runFunction();
+			    
+//			    System.out.println("[[\n"+f.getCommands()+"\n]]");
+			    return;
 			}
-			else
-			{
-				//Function f = new Function(lv.getFunctionByName(args.get(1)).getName(), lv.getFunctionByName(args.get(1)).getCommands());
-				lv.getFunctionList().get(i).runFunction();
-				return;
-			}
+			
 		}
 
-		System.out.println("[ ERR ]:[ RUNF ]:[ NOTFOUND:"+args.get(1)+" ] Funktion nicht gefunden!");
+		Err.printErr("[ ERR ]:[ RUNF ]:[ NOTFOUND:"+args.get(1)+" ] Funktion nicht gefunden!");
 		System.exit(0);
 	}
 }

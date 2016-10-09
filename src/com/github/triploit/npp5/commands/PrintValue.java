@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class PrintValue 
@@ -28,7 +29,7 @@ public class PrintValue
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ PRV ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
+			Err.printErr("[ ERR ]:[ PRV ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
 			System.exit(0);
 		}
 	}

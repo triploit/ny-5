@@ -16,6 +16,7 @@ public class LangVars
 	private List<String> gtv = new ArrayList<String>();
 	private List<String> ccode = new ArrayList<String>();
 	private List<Function> fs = new ArrayList<Function>();
+	private String curf = "";
 
 	public List<Function> getFunctionList()
 	{
@@ -42,6 +43,16 @@ public class LangVars
 	    }
 	    
 	    return code;
+	}
+	
+	public String curFile()
+	{
+	    return curf;
+	}
+	
+	public void setCurFile(String n)
+	{
+	    curf = n;
 	}
 	
 	public void writeFile(String filename, String txt) throws IOException
@@ -89,7 +100,7 @@ public class LangVars
 			if (s.equals(name))
 				return x;
 		}
-		System.out.println("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
+		Err.printErr("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
 		System.exit(0);
 		return 0;
 	}
@@ -104,7 +115,7 @@ public class LangVars
 			if (s.equals(name))
 				return s;
 		}
-		System.out.println("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
+		Err.printErr("[ ERR ]:[ GOTO ]:[ NOTFOUND:\""+name+"\" ] Konnte Sprungmarke nicht finden!");
 		System.exit(0);
 		return "[NotFound]";
 	}
@@ -157,8 +168,10 @@ public class LangVars
 			if (s.equals(name))
 				return fs.get(i);
 		}
-		//System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
-		//System.exit(0);
+		
+		Err.printErr("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
+		System.exit(0);
+		
 		return (Function) (new Function("[NotFound]", "[<FUNKTION NICHT GEFUNDEN>]"));
 	}
 	
@@ -172,7 +185,7 @@ public class LangVars
 			if (s.equals(name))
 				return true;
 		}
-		//System.out.println("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
+		//Err.printErr("[ ERR ]:[ FUNCTION ]:[ NOTFOUND:\""+name+"\" ] Konnte Funktion nicht finden!");
 		//System.exit(0);
 		return false;
 	}

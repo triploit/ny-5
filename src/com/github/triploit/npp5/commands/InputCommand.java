@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class InputCommand 
@@ -75,13 +76,13 @@ public class InputCommand
 		    }
 		    else
 		    {
-			System.out.println("[ ERR ]:[ INP ]:[ VAL ]:[ SETVALUE:"+v.getName()+"="+vs.getValue().toString()+" ] Die Eingabe hat nicht zum Typ der Variable gepasst!");
+			Err.printErr("[ ERR ]:[ INP ]:[ VAL ]:[ SETVALUE:"+v.getName()+"="+vs.getValue().toString()+" ] Die Eingabe hat nicht zum Typ der Variable gepasst!");
 			System.exit(0);
 		    }
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ INP ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
+			Err.printErr("[ ERR ]:[ INP ]:[ VAR ]:[ NOTFOUND ] Variable \""+args.get(1)+"\" konnte nicht gefunden werden!");
 			System.exit(0);
 		}
 	}

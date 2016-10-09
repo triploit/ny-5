@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Rem {
@@ -35,7 +36,7 @@ public class Rem {
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ REM ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			Err.printErr("[ ERR ]:[ REM ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 			System.exit(0);
 		}
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Sleep
@@ -27,12 +28,12 @@ public class Sleep
 		} 
 		catch (NumberFormatException e)
 		{
-		    System.out.println("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert der Variable nicht abrufen!");
+		    Err.printErr("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert der Variable nicht abrufen!");
 		    System.exit(0);
 		} 
 		catch (InterruptedException e)
 		{
-		    System.out.println("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert der Variable nicht abrufen!");
+		    Err.printErr("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert der Variable nicht abrufen!");
 		    System.exit(0);
 		}
 	}
@@ -46,18 +47,18 @@ public class Sleep
         	    } 
         	    catch (NumberFormatException e)
         	    {
-        		System.out.println("[ ERR ]:[ SLEEP ]:[ CANNOTCONVERTTOLONG:"+args.get(1)+" ] Kann den Wert nicht konvertieren!");
+        		Err.printErr("[ ERR ]:[ SLEEP ]:[ CANNOTCONVERTTOLONG:"+args.get(1)+" ] Kann den Wert nicht konvertieren!");
         		System.exit(0);
         	    } 
         	    catch (InterruptedException e)
         	    {
-        		System.out.println("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert nicht konvertieren!");
+        		Err.printErr("[ ERR ]:[ SLEEP ]:[ VAL:"+v.getName()+" ] Konnte den Wert nicht konvertieren!");
         		System.exit(0);
         	    }
 	    }
 	    else
 	    {
-		System.out.println("[ ERR ]:[ SLEEP ]:[ VAL ] Der Wert als Argument 1 war kein Integer!");
+		Err.printErr("[ ERR ]:[ SLEEP ]:[ VAL ] Der Wert als Argument 1 war kein Integer!");
 	    }
 	}
     }

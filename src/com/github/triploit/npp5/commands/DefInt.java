@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class DefInt 
@@ -23,7 +24,7 @@ public class DefInt
 		
 		if (LangVars.isNumeric(tvn))
 		{
-			System.out.println("[ ERR ]:[ DEFI ]:[ DEFINEVAR ]:[ NAME:"+vname+" ] Der Name einer Variable darf nicht mit einer Zahl beginnen!");
+			Err.printErr("[ ERR ]:[ DEFI ]:[ DEFINEVAR ]:[ NAME:"+vname+" ] Der Name einer Variable darf nicht mit einer Zahl beginnen!");
 			System.exit(0);
 		}
 		
@@ -37,7 +38,7 @@ public class DefInt
 		
 		if (!LangVars.isNumeric(vvalue))
 		{
-			System.out.println("[ ERR ]:[ DEFI ]:[ ISSTRING ] Der Wert entspricht nicht dem Typen!");
+			Err.printErr("[ ERR ]:[ DEFI ]:[ ISSTRING ] Der Wert entspricht nicht dem Typen!");
 			System.exit(0);
 		}
 		

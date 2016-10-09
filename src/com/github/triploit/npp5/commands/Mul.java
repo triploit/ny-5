@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Mul {
@@ -41,7 +42,7 @@ public class Mul {
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ MUL ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+			Err.printErr("[ ERR ]:[ MUL ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 			System.exit(0);
 		}
 	}

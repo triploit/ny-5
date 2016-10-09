@@ -7,6 +7,7 @@ import com.github.triploit.npp5.Objects.Command;
 import com.github.triploit.npp5.Objects.Value;
 import com.github.triploit.npp5.Objects.Variable;
 import com.github.triploit.npp5.other.LangVars;
+import com.github.triploit.npp5.sysinteract.OperatingSystem;
 
 public class Init
 {
@@ -55,9 +56,9 @@ public class Init
 	
 	Command end = new Command("end", 0);
 	lv.addLCommands(end);
-	Command rtrn = new Command("return", 0);
-	lv.addLCommands(rtrn);
 	
+//	Command rtrn = new Command("return", 0);
+//	lv.addLCommands(rtrn);
 //	Command ddm = new Command("ddm", 1);
 //	lv.addLCommands(ddm);
 //	Command ddv = new Command("ddv", 1);
@@ -73,9 +74,21 @@ public class Init
 	lv.addLCommands(rem);
 	Command mod = new Command("mod", 2);
 	lv.addLCommands(mod);
-	
+
 	Command pf = new Command("pf", 1);
 	lv.addLCommands(pf);
+	
+	Command rf = new Command("rf", 2); // read File
+	lv.addLCommands(rf);
+	Command df = new Command("df", 1); // delete File
+	lv.addLCommands(df);
+	Command cf = new Command("cf", 1); // create File
+	lv.addLCommands(cf);
+	
+	Command cd = new Command("cd", 1); // create Directory
+	lv.addLCommands(cd);
+	Command chd = new Command("dd", 1); // delete Directory
+	lv.addLCommands(chd);
 	
 //	lv.getFunctionList().add(CommandFunctionPointers._do);
 //	lv.getFunctionList().add(CommandFunctionPointers.mov);
@@ -100,7 +113,15 @@ public class Init
 	rnd.getValue().setNumeric(true);
 	rnd.getValue().setString(false);
 	
+	Variable fos = new Variable("_fos", new Value(OperatingSystem.getOperatingSystem()));
+	fos.setNumeric(true);
+	
+	fos.getValue().setNumeric(true);
+	fos.getValue().setString(false);
+	
+	
 	lv.addLVariable(rnd);
+	lv.addLVariable(fos);
     }
     
 }

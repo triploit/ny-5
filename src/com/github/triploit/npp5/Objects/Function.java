@@ -20,8 +20,9 @@ public class Function
 		this.commands = commands;
 		this.name = name;
 
-		p = new Parser("", false, "");
+		p = new Parser("", false, "", false);
 		p.setRawCode(commands);
+		
 		t = new Tokenizer(p);
 	}
 	
@@ -30,10 +31,18 @@ public class Function
 		return this.name;
 	}
 	
-	public void runFunction() throws IOException
+	public void runFunction()
 	{
-		this.t.doTokenize();
-		this.t.executeCode();
+		try
+		{
+		    this.t.doTokenize();
+		    this.t.executeCode();
+		} 
+		catch (IOException e)
+		{
+		    System.out.println("[ ERR ]:[ FATAL ]:[ FUNCTION ]:[ IOException ] Bitte diesesn Error Melden!");
+		    System.exit(0);
+		}
 	}
 	
 	public String getCommands()

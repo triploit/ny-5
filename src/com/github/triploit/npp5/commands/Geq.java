@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.CommandGetter;
 
@@ -24,7 +25,7 @@ public class Geq {
 			{
 				if (val.getName().equals("[NotFound]"))
 				{
-					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					Err.printErr("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 					System.exit(0);
 				}
 				if (docc)
@@ -42,7 +43,7 @@ public class Geq {
 			}
 			else
 			{
-				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				Err.printErr("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 				System.exit(0);
 			}
 		}
@@ -52,7 +53,7 @@ public class Geq {
 			{
 				if (val.getName().equals("[NotFound]"))
 				{
-					System.out.println("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					Err.printErr("[ ERR ]:[ GEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 					System.exit(0);
 				}
 				else
@@ -68,10 +69,10 @@ public class Geq {
 			}
 			else
 			{
-				System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				Err.printErr("[ ERR ]:[ GEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 				System.exit(0);
 			}
-			//System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
+			//Err.printErr("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
 		}
 		
 		return CommandGetter.getJ();

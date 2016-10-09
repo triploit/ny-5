@@ -3,6 +3,7 @@ package com.github.triploit.npp5.commands;
 import java.util.List;
 
 import com.github.triploit.npp5.Main;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class DoDeleteVariable 
@@ -20,7 +21,7 @@ public class DoDeleteVariable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ DEL ]:[ VAR ]:[ NOTFOUND ] Konnte die Variable \""+args.get(1)+"\" nicht finden!");
+			Err.printErr("[ ERR ]:[ DEL ]:[ VAR ]:[ NOTFOUND ] Konnte die Variable \""+args.get(1)+"\" nicht finden!");
 			System.exit(0);
 		}
 	}

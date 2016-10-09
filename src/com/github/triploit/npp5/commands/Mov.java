@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.*;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 
 public class Mov 
@@ -25,7 +26,7 @@ public class Mov
 		
 		if (var.getName().equals("[NotFound]") || !lv.findLVariableByName(var.getName()))
 		{
-			System.out.println("[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!");
+			Err.printErr("[ ERR ]:[ MOV ]:[ NOTFOUND:"+var.getName()+" ] Variable konnte nicht gefunden werden!");
 			System.exit(0);
 		}
 		else

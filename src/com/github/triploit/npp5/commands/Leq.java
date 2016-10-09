@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Variable;
+import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
 import com.github.triploit.npp5.run.CommandGetter;
 
@@ -24,7 +25,7 @@ public class Leq {
 			{
 				if (val.getName().equals("[NotFound]"))
 				{
-					System.out.println("[ ERR ]:[ LEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					Err.printErr("[ ERR ]:[ LEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 					System.exit(0);
 				}
 				else if (docc)
@@ -42,7 +43,7 @@ public class Leq {
 			}
 			else
 			{
-				System.out.println("[ ERR ]:[ LEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				Err.printErr("[ ERR ]:[ LEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 				System.exit(0);
 			}
 		}
@@ -52,7 +53,7 @@ public class Leq {
 			{
 				if (val.getName().equals("[NotFound]"))
 				{
-					System.out.println("[ ERR ]:[ LEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
+					Err.printErr("[ ERR ]:[ LEQ ]:[ VAL/VAR2 ]:[ NOTFOUND:"+args.get(2)+" ] Konnte die Variable nicht finden!");
 					System.exit(0);
 				}
 				else
@@ -68,10 +69,10 @@ public class Leq {
 			}
 			else
 			{
-				System.out.println("[ ERR ]:[ LEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
+				Err.printErr("[ ERR ]:[ LEQ ]:[ VAR ]:[ NOTFOUND:"+var.getName()+" ] Konnte die Variable nicht finden!");
 				System.exit(0);
 			}
-			//System.out.println("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
+			//Err.printErr("[ ERR ]:[ GEQ ]:[ VAR ]:[ FALSETYPE:"+var.getName()+"&"+val.getName()+" ] Falscher Typ der beiden Variablen!");
 		}
 		
 		return CommandGetter.getJ();
