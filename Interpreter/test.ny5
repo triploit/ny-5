@@ -1,6 +1,7 @@
 {main}
   defs  inpf, [n];
   defs  inpf2, [n];
+  defi  a3, 3;
 
   say   "Inp: ";
   inp   inpf;
@@ -12,6 +13,6 @@
   say   "TOG: ";
   prv   inpf;@
 
-  mov   3, _fos;
+  mov   a3, _fos;
   prv   _fos;@
 end;
