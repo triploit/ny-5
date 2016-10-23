@@ -108,9 +108,9 @@ public class CommandGetter
 					
 
 					String sem = cmds.get(j);
-					if (!sem.equals(";"))
+					if (!sem.equals(";") && !sem.equals(""))
 					{
-					    Err.printErr("[ ERR ]:[ PARSE ]:[ EXECUTE ]:[ CODE ] Fehlendes Semikolon an Stelle "+j+" Zeile "+line+"!");
+					    Err.printErr("[ ERR ]:[ PARSE ]:[ EXECUTE ]:[ CODE:\""+sem+"\" ] Erwartetes Semikolon an Stelle "+j+" Zeile "+line+"!");
 					    System.exit(0);
 					}
 					

@@ -46,6 +46,11 @@
 -----------
 ###0.0.1 Changelog
 
+####**Version 161023i**
+
+* **Hinzugefügt** >> Include >> Eine Datei includieren >> NOCH NICHT IM C++ COMPILER
+* **BugFix** >> Semikolon Bugfix >> Semikolon wird nun am Ende erwartet
+
 ####**Version 16109h**
 
 * **Entfernt** >> Return >> Zum letzten Sprung zurückkehren

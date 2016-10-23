@@ -73,10 +73,38 @@ public class Parser
 						line = cc.encryptCode()+"\n";
 						
 						bw.write(line);
-						//System.out.print(i+"\t"+line);
 						line = cc.decryptCode()+"\n";
+						
+						if (line.startsWith("#inc "))
+						{
+							String f = line.substring(5, line.length()).replace("\"", "");							
+							BufferedReader br2 = new BufferedReader((new FileReader(f)));
+							String line2;
+							
+							if (doenc)
+							{
+								outfile = outfile.replace("ny5", "nct5");
+								CompileCode cc2 = new CompileCode("");
+								cc2.initStrings();
+								
+								while ((line2 = br.readLine()) != null)
+								{
+									//i++;
+									if (doenc)
+									{
+										cc2.setCode(line2);
+										line2 = cc2.encryptCode();
+										
+										bw.write(line2);
+										line2 = cc2.decryptCode();
+									}
+									code += line2+"\n";
+								}
+								br2.close();
+							}
+						}
 					}
-					code += line;			
+					code += line+"\n";			
 				}
 				bw.close();
 				System.out.println("[ SYS ]:[ COMPILE ]:[ ENCRYPT ] Fertig!");
@@ -88,10 +116,39 @@ public class Parser
 				cc.initStrings();
 				
 				while ((line = br.readLine()) != null)
-				{
+				{				
 					cc.setCode(line);
-					line = cc.decryptCode()+"\n";
-					code += line;		
+					line = cc.decryptCode();
+					
+					if (line.trim().startsWith("#inc "))
+					{
+						line = line.trim();
+						BufferedReader br2 = null;
+						String filename2 = line.substring(5, line.length()).replace("\"", "");
+						
+						try
+						{
+							br2 = new BufferedReader((new FileReader((new File(filename2)))));		
+						}
+						catch(FileNotFoundException e)
+						{
+							Err.printErr("[ ERR ]:[ PARSER ]:[ INCLUDE ]:[ FILE:\""+filename2+"\" ]:[ NOTFOUND] Konnte Datei nicht finden!");
+							System.exit(0);
+						}
+						
+						String line2;						
+						while ((line2 = br2.readLine()) != null)
+						{	
+							cc.setCode(line2);
+							line2 = cc.decryptCode();
+							code += line2+"\n";
+						}
+					}
+					else
+					{
+						code += line+"\n";					
+					}
+						
 				}
 			}
 		} 
