@@ -1,3 +1,3 @@
 {main}
   say   "Hallo Welt!";@
-  end;
+  ?end;?
