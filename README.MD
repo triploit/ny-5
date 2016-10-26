@@ -21,9 +21,13 @@
 		* 0.4.1.1 Weiteres zu Strings
 	* 0.4.2 Integer
 		* 0.4.2.1 Random
-		* 0.4.2.2 Random
+		* 0.4.2.2 FOS - Das Betriebssystem ermitteln
+		* 0.4.2.3 Integer in ASCII Zeichen umwandeln
 * 0.5 Eingabe
 * 0.6 Werte verändern
+		* 0.6.0.1 Mov
+		* 0.6.0.2 Moi
+		* 0.6.0.3 Mos
 	* 0.6.1 Add
 	* 0.6.2 Rem
 	* 0.6.3 Div
@@ -37,19 +41,21 @@
 	* 0.8.2 Neq
 	* 0.8.3 Geq
 	* 0.8.4 Leq
-* 1.0 Beispiele
-	* 1.1 Fibonacci Zahlenfolge
-	* 1.2 Fakultaet einer Zahl berechnen
-	* 1.3 Taschenrechner
-	* 1.4 Kleines Text Adventure
+* 2.0 Dateien einbinden (inludieren)
 
 -----------
 ###0.0.1 Changelog
 
+####**Version 161026i**
+
+*	**Hinzugefügt** >> Moi >> Integer Werte in Variablen verschieben >> 0.6.0.2 Moi
+* **Hinzugefügt** >> Mos >> String Werte in Variablen verschieben >> 0.6.0.3 Mos
+* **Hinzugefügt** >> Sti >> Integer in ASCII-Zeichen umwandeln >>
+
 ####**Version 161023i**
 
-* **Hinzugefügt** >> Include >> Eine Datei includieren >> NOCH NICHT IM C++ COMPILER
-* **BugFix** >> Semikolon Bugfix >> Semikolon wird nun am Ende erwartet
+* **Hinzugefügt** >> Include >> Eine Datei includieren >> 2.1 Include
+* **BugFix** >> Semikolon Bugfix >> Semikolon wird nun am Ende eines Befehls erwartet
 
 ####**Version 16109h**
 
@@ -137,7 +143,7 @@ Hier als Beispiel wird die Datei `compiled_trpg.nct5` ausgewählt.
 ###0.2.2.1 C++ Compiler
 
 ####**0.2.2.1.1 Eine Datei kompilieren**
-Es ist möglich, den Ny++ Code bis auf die Befehle `ddv`, `ddm` und `return` in C++ zu übersetzen.
+Es ist möglich, den Ny++5 Code in C++ zu übersetzen.
 Dies geht folgendermaßen:
 
 Mac/Linux:
@@ -219,7 +225,7 @@ Hier wurde die Variable `i` mit dem Wert `7` erstellt.
 
 Es ist auch möglich in Ny++5 zufällig generierte Zahlen zu erzeugen. Diese Zufallszahlen, sind in der Variable `_rnd` gespeichert und können von da aus abgerufen werden.
 
-**0.4.2.2 FOS**
+**0.4.2.2 FOS - Das Betriebssystem ermitteln**
 
 Ny++5 bietet eine Möglichkeit das Betriebssystem zu ermitteln. Dies geht mit der System-Variable `_fos`, die auch im Compiler funktioniert. Sie beinhaltet eine Zahl, wo jede Zahl für ein Betriebssystem steht:
 
@@ -229,6 +235,25 @@ Ny++5 bietet eine Möglichkeit das Betriebssystem zu ermitteln. Dies geht mit de
 * `4` >> Anderes
 
 **NOTIZ: System-Variablen sind nicht beschreibbar!**
+
+**0.4.2.3 Integer in ASCII-Zeichen umwandeln**
+
+Um einen Integer Wert in ein ASCII-Zeichen umzuwandeln,
+gibt es folgenden Befehl:
+
+	sti [Quelle], [Ziel];
+
+In Sti, wird der Integer-Wert der Quelle, als ASCII-Zeichen in Ziel gespeichert.
+So würden wir ein "A" ausgegeben:
+
+	defi ASCII_NUMBER_A, 65;
+	defs ASCII_A, [n];        		  ? [n] wird im nächsten Kapitel beschrieben ?
+													  		  ? Alles was in Fragezeichen steht, ist ein ?
+	sti ASCII_NUMBER_A, ASCII_A;	  ? Kommentar und wird Ignoriert.            ?
+	prv ASCII_A;
+
+Durch Sti wird der Wert der Variable `ASCII_NUMBER_A` in ein ASCII-Zeichen umgewandelt und in die String-Variable `ASCII_A` gespeichert. Die Variablen müssen dabei nicht mit `ASCII_` oder `ASCII_NUMBER_` beginnen. Dies war hier nur ein Beispiel.
+
 
 ####**0.4.3 Leere Variablen**
 
@@ -266,6 +291,39 @@ Wobei die erste `3` die Eingabe ist.
 ###0.6 Werte verändern
 
 Na klar muss man in jeder Programmiersprache mit Werten arbeiten, sie verändern usw. Also ist das hier auch möglich!
+
+####**0.6.0.1 Mov**
+
+####Mov
+
+In Ny++5 kann man Werte mit anderen Werten überschreiben, also Variablen setzen und deren Wert mit einem anderen ersetzen:
+
+	mov [Quelle], [Ziel];
+Das würde dann mit diesem Code...
+
+	defs s, "Hallo 1";
+	defs s2, "Hallo 2";
+
+	mov s2, s;
+	prv s;@
+... aus `Hallo 1` in `s`, ein `Hallo 2` machen. Der Wert von s wird mit dem aus s2 überschrieben. Mit Mov ist es jedoch nur möglich, Variablen in Variablen zu verschieben.
+
+####Moi
+
+Damit wir jedoch auch Werte in Variablen verschieben können, gibt es `moi`:
+
+	defi s, 78;
+	moi 97, s;
+Moi verschiebt einen Zahlenwert in eine Variable vom Typen Integer. Es sind bei Moi nur Integer möglich!
+
+####Mos
+
+Um dann auch die Strings abzudecken, haben wir `mos`:
+
+	defs s, "Hallo 1";
+	mos "Hallo 2", s;
+Damit wird der Wert von `s` mit `Hallo 2` überschrieben.
+
 
 ####**0.6.1 Add**
 
@@ -399,285 +457,74 @@ Dabei ist es immer so aufgebaut:
 
 Wir vergleichen zwei Variablen und prüfen auf Gleichheit, wenn dies so ist, springen wir zur Marke `marke`
 
-		defs	h, "Hallo";
-		defs  h2, "Hallo";
+	defs	h, "Hallo";
+	defs  h2, "Hallo";
 
-		eq		h,h2,marke;
-		say		"Variablen sind ungleich!";
+	eq		h,h2,marke;
+	say		"Variablen sind ungleich!";
+	end;
+
+	{marke}
+		say		"Variablen sind gleich!";
 		end;
-
-		{marke}
-			say		"Variablen sind gleich!";
-			end;
 
 ####**0.8.2 Neq**
 
 Wir vergleichen zwei Variablen und prüfen auf Ungleichheit `neq`, wenn dies so ist, springen wir zur Marke `marke`
 
-		defs	h, "Hallo";
-		defs  h2, "Hallo";
+	defs	h, "Hallo";
+	defs  h2, "Hallo";
 
-		neq		h,h2,marke;
-		say		"Variablen sind gleich!";
+	neq		h,h2,marke;
+	say		"Variablen sind gleich!";
+	end;
+
+	{marke}
+		say		"Variablen sind ungleich!";
 		end;
-
-		{marke}
-			say		"Variablen sind ungleich!";
-			end;
 
 ####**0.8.3 Geq**
 
 Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größenunterschied haben (h>h2), dann nutzen wir `geq`:
 
-		defi	h, 9;
-		defi 	h2, 3;
+	defi	h, 9;
+	defi 	h2, 3;
 
-		geq		h,h2,marke;
-		say		"H2 ist größer!";
+	geq		h,h2,marke;
+	say		"H2 ist größer!";
+	end;
+
+	{marke}
+		say		"H ist größer!";
 		end;
-
-		{marke}
-			say		"H ist größer!";
-			end;
 
 ####**0.8.4 Leq**
 
 Wenn wir zwei Variablen vergleichen, die wir prüfen wollen ob sie einen Größenunterschied haben (h<h2), dann nutzen wir `geq`:
 
-		defi	h, 3;
-		defi 	h2, 9;
 
-		geq		h,h2,marke;
-		say		"H2 ist kleiner!";
+	defi	h, 3;
+	defi 	h2, 9;
+
+	geq		h,h2,marke;
+	say		"H2 ist kleiner!";
+	end;
+
+	{marke}
+		say		"H ist kleiner!";
 		end;
 
-		{marke}
-			say		"H ist kleiner!";
-			end;
+----------------------
 
---------------------
-###1.0 Beispiele
-####1.1 Fibonacci Zahlenfolge
+###2.0 Dateien einbinden (inludieren)
 
-	{init}
-	  defi  zahl1, 1;
-	  defi  zahl2, 1;
+Es ist möglich, die Werte, den Code und die Variablen anderer Dateien zu übernehmen.
+Dies geht mit einem Präprozessorbefehl (Dieser Befehl wird noch vor dem eigentlichen Ausführen des Codes ausgeführt) names `inc`:
 
-	  defi  zwi1, [n];
-	  defi  zwi2, [n];
+	#inc Pfad/Zur/Datei.ny5
 
-	  defi  null, 0;
-	{initE}
+Damit fügen wir den ganzen Code einer Datei an dieser Stelle ein.
 
-	{main}
-	  prv   zahl1;@
-	  mov   zahl2, zwi2;
+Bei Windows sieht das dann so aus:
 
-	  add   zahl1, zahl2;
-	  mov   zahl1, zahl2;
-
-	  mov   zwi2, zahl1;
-	  geq   zahl2,null,main;
-	{mainE}
-
-
-####1.2 Fakultaet einer Zahl berechnen
-
-	{init}
-	  defi  input, [n];
-	  defi  ctr, [n];
-
-	  defi  null, [n];
-	  defi  tmp, [n];
-
-	  defi  ctrm, [n];
-	  defi  a1, 1;
-
-	  say   "> ";
-	  inp   input;
-
-	  mov   input, tmp;
-	  rem   input, a1;
-
-	  mov   input, ctrm;
-	{initE}
-
-	{main}
-	  add   ctr, a1;
-	  mul   tmp, ctr;
-
-	  leq    ctr,ctrm,main;
-	  prv    tmp;@
-	{mainE}
-
-
-####1.3 Taschenrechner
-
-	{init}
-	  {vinit}
-	    defi  a11, 2;
-	    defi  a2, [n];
-	    defi  a1, [n];
-
-	    defi  a3, [n];
-	    defi  a0, [n];
-	    defi  a12, 0;
-
-	    defi  a13, 1;
-	    defi  a14, 2;
-	    defi  a4, [n];
-
-	    say   "0 > ";
-	    inp   a0;
-	    say   "1 > ";
-	    inp   a1;
-
-	    mov   a0, a2;
-	    mov   a1, a3;
-	{initE}
-
-	{main}
-	  gt    dz;
-	  {gz}
-	    say   "Die eingegebene Zahl ist gerade!";@
-	    gt    dze;
-	  {ngz}
-	    say   "Die eingegebene Zahl ist nicht gerade!";@
-	    gt    dze;
-	  {dz}
-	    mod   a1, a11;
-
-	    eq    a1,a12,gz;
-	    neq   a1,a12,ngz;
-
-	    gt    backup;
-	    {dze}
-
-	  {addition}
-	    gt    backup;
-
-	    add   a0, a1;
-	    say   "Addition: ";
-	    prv   a0;@
-
-	    gt    backup;
-
-	  {subtraktion}
-	    rem   a0, a1;
-	    say   "Subtraktion: ";
-	    prv   a0;@
-
-	    gt    backup;
-
-	  {multiplikation}
-	    mul   a0, a1;
-	    say   "Multiplikation: ";
-	    prv   a0;@
-
-	    gt    backup;
-
-	  {division}
-	    div   a0, a1;
-	    say   "Division: ";
-	    prv   a0;@
-
-	    gt    backup;
-
-	  say   "Berechnung beendet!";@@
-	  {endcalc}
-	    say   "1. Wiederholen";@
-	    say   "2. Ende";@
-
-	    say   "> ";
-	    inp   a4;
-	    eq    a4,a13,init;
-	    eq    a4,a14,mainE;
-
-	    neq   a4,a13,err;
-	    neq   a4,a14,err;
-
-	  {err}
-	    say  "Die Eingabe war nicht korrekt!";@
-	    gt   endcalc;
-
-	  {backup}
-	    mov   a2, a0;
-	    mov   a3, a1;
-	    return;
-
-	{mainE}
-	end
-
-
-####1.4 Kleines Text Adventure
-
-	{main}
-	  defi  cmd, [n];
-	  defi  a1,1;
-
-	  defi  a2,2;
-	  defi  a3,3;
-	  gt    p1;
-
-	{p1}
-	  say   "Du stehst in einem Wald";@
-	  say   "1. Graben";@
-	  say   "2. Norden";@
-	  say   "3. Süden";@
-
-	  gt    incmd;
-	  eq    cmd,a1,p2a;
-
-	  eq    cmd,a2,p2b;
-	  eq    cmd,a3,p2c;
-
-	  neq   cmd,a1,err;
-	  neq   cmd,a2,err;
-	  neq   cmd,a3,err;
-
-	{p2a}
-	  say   "Du gräbst tiefer und tiefer und stößt";@
-	  say   "auf eine Truhe Gold!";@
-	  say   "Du gehst nach Hause.";@
-	  gt    bend;
-
-	{p2b}
-	  say   "Du gehst nach Norden und siehst eine tiefe Schlucht.";@
-	  say   "Doch leider stolperst du über einen Stein und fällst";@
-	  say   "den Abhang hinunter.";@
-	  gt    p3b;
-
-	{p2c}
-	  say   "Du gehst nach Süden und erblickst Leere. Was tust du?";@
-	  say   "1. Du gehst nach Norden";@
-	  say   "2. Du gehst nach Hause";@
-
-	  gt    incmd;
-	  eq    cmd,a1,p2b;
-	  eq    cmd,a2,p3a;
-
-	  neq   cmd,a1,err;
-	  neq   cmd,a2,err;
-
-	{p3a}
-	  say   "Zuhause angekommen legst du dich hin";@
-	  say   "und schläfst ein...";@
-	  gt    bend;
-
-	{p3b}
-	  @say  "Du wachst in einem Krankenhaus auf,";@
-	  say   "wie hat man dich hierherbekommen?";@
-	  say   "Im Grunde war dir dies egal, du warst sicher.";@
-	  gt    bend;
-
-	{incmd}
-	  say   "> ";
-	  inp   cmd;
-	  return;
-
-	{err}
-	  say   "Falsche eingabe! Spiel beendet.";@
-	  end;
-
-	{bend}
-	  say   "ENDE";@
+	#inc Pfad\Zur\Datei.ny5

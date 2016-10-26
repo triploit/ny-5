@@ -42,11 +42,12 @@ public class DefInt
 			System.exit(0);
 		}
 		
-		Variable v = new Variable(vname, new Value(vvalue, true));
-		v.setNumeric(true);
-		v.getValue().setNumeric(true);
-		
+		Variable v = new Variable(vname, new Value(vvalue, true));	
 		LangVars lv = Main.getLangVars();
+		v.setNumeric(true);
+		
+		v.getValue().setString(false);
+		v.getValue().setNumeric(true);	
 
 		if (docc)
 		{

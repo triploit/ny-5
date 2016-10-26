@@ -75,7 +75,7 @@ public class Parser
 						bw.write(line);
 						line = cc.decryptCode()+"\n";
 						
-						if (line.startsWith("#inc "))
+						if (line.trim().startsWith("#inc "))
 						{
 							String f = line.substring(5, line.length()).replace("\"", "");							
 							BufferedReader br2 = new BufferedReader((new FileReader(f)));

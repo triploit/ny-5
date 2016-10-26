@@ -61,7 +61,7 @@ public class Variable
 		}
 		else
 		{
-			System.out.println("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert passt nicht zum Typ!");			
+			Err.printErr("[ ERR ]:[ SYS ]:[ VAR ]:[ SETVALUE ] Der Wert \""+value.getValue()+"\" passt nicht zum Typ! "+this.value.isString()+" "+this.value.isNumeric());			
 			System.exit(0);
 		}
 	    }

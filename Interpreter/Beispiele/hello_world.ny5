@@ -1,3 +1,5 @@
-{main}
-  say   "Hallo Welt!";@
+?{main}?
+  say "Welt!";@
+  say "Wie gehts?";@
+  prv _fos;@
   ?end;?

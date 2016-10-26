@@ -1,5 +1,4 @@
 {main}
-#inc Beispiele/hello_world.ny5
   defs  inpf, [n];
   defs  inpf2, [n];
   defi  a3, 3;
