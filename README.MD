@@ -25,9 +25,9 @@
 		* 0.4.2.3 Integer in ASCII Zeichen umwandeln
 * 0.5 Eingabe
 * 0.6 Werte verändern
-		* 0.6.0.1 Mov
-		* 0.6.0.2 Moi
-		* 0.6.0.3 Mos
+	* 0.6.0.1 Mov
+	* 0.6.0.2 Moi
+	* 0.6.0.3 Mos
 	* 0.6.1 Add
 	* 0.6.2 Rem
 	* 0.6.3 Div
