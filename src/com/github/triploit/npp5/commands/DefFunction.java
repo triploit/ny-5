@@ -18,15 +18,15 @@ public class DefFunction
 			args2 = args2.substring(0, args2.length()-2);
 		}
 		
-		System.out.println("DEFF gefunden!");		
-		
-		for (int i = 0; i < args.size(); i++)
-		{
-			if (i == 2)
-				System.out.println("\t["+i+"] "+args2);
-			else
-				System.out.println("\t["+i+"] "+args.get(i));
-		}
+//		System.out.println("DEFF gefunden!");		
+//		
+//		for (int i = 0; i < args.size(); i++)
+//		{
+//			if (i == 2)
+//				System.out.println("\t["+i+"] "+args2);
+//			else
+//				System.out.println("\t["+i+"] "+args.get(i));
+//		}
 		
 		//System.out.println("DEFF");
 		LangVars lv = Main.getLangVars();
@@ -36,7 +36,7 @@ public class DefFunction
 		if (lv.findFunctionByName(args.get(1)))
 		{
 			System.out.println("[ ERR ]:[ DEFF ]:[ ALREADYDEFINED:"+args.get(1)+" ] Funktion wurde schon definiert!");
-			//System.exit(0);
+			System.exit(0);
 		}
 		else
 		{

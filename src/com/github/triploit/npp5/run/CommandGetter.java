@@ -51,7 +51,7 @@ public class CommandGetter
 		}
 		
 		// System.out.println("[ NYPP ] Execute...\n");
-		// int lj = 0;
+		int lj = 0;
 		
 		for (j = 0; j < cmds.size(); j++)
 		{
@@ -81,13 +81,16 @@ public class CommandGetter
 				
 				if (j < cmds.size() && cmds.get(j).equalsIgnoreCase(lcommands.get(i).getName()))
 				{
-					// System.out.println("[I:"+j+"] "+cmds.get(j));
+					//System.out.println("[ COMMANDGETTER ]:[I:"+j+"] "+cmds.get(j));
 					
 					List<String> args = new ArrayList<String>();
 					for (int x = 0; x <= lcommands.get(i).getArgCount() && j < cmds.size(); x++)
 					{
-						args.add(cmds.get(j));
-						j++;
+						if (cmds.get(j) != "+[DN3:F0:1NE7")
+						{
+							args.add(cmds.get(j));
+							j++;
+						}
 					}
 					
 					String sem = cmds.get(j);
@@ -150,7 +153,7 @@ public class CommandGetter
 						}
 						else
 						{
-							//lj = j;
+							// lj = j;
 							j = lv.getGotoIntByName(args.get(1));
 						}
 					}
@@ -215,16 +218,18 @@ public class CommandGetter
 					{
 						Sti.func(args, docc);
 					}
-					// else if (name.equalsIgnoreCase("runf"))
-					// {
-					// j = j + 2;
-					// RunF.func(args, docc);
-					// }
-					// else if (name.equalsIgnoreCase("deff"))
-					// {
-					// if (!docc || docc)
-					// DefFunction.func(args);
-					// }
+					else if (name.equalsIgnoreCase("runf"))
+					{
+						lj = j;
+						RunF.func(args, docc);
+						j = lj;
+						//System.out.println("[ COMMANDGETTER ]:[ J ] ");
+					}
+					else if (name.equalsIgnoreCase("deff"))
+					{
+						if (!docc || docc)
+							DefFunction.func(args);
+					}
 					else
 					{
 						Err.printErr("[ ERR ]:[ COMMANDGETTER:" + name + " ] Befehl \"" + lcommands.get(i).getName()

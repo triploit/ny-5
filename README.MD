@@ -42,15 +42,25 @@
 	* 0.8.3 Geq
 	* 0.8.4 Leq
 * 2.0 Dateien einbinden (inludieren)
+* 2.1 Funktionen
+	* 2.1.1 Funktionen deklarieren
+	* 2.1.2 Funktionen aufrufen
+	* 2.1.3 Parameter/Argumente
 
 -----------
 ###0.0.1 Changelog
 
-####**Version 161026i**
+####**Version 161027j**
 
-*	**Hinzugefügt** >> Moi >> Integer Werte in Variablen verschieben >> 0.6.0.2 Moi
-* **Hinzugefügt** >> Mos >> String Werte in Variablen verschieben >> 0.6.0.3 Mos
-* **Hinzugefügt** >> Sti >> Integer in ASCII-Zeichen umwandeln >>
+* **Hinzugefügt** >> DeF >> Funktionen deklarieren >> 2.1.1
+* **Hinzugefügt** >> RunF >> Funktionen aufrufen >> 2.1.2
+* **BugFix** >> ErrorMessage >> ErrorNachrichten werden verbessert angezeigt
+
+####**Version 162610i**
+
+*	**Hinzugefügt** >> MoI >> Integer Werte in Variablen verschieben >> 0.6.0.2
+* **Hinzugefügt** >> MoS >> String Werte in Variablen verschieben >> 0.6.0.3
+* **Hinzugefügt** >> Sti >> Integer in ASCII-Zeichen umwandeln >> 0.4.2.3
 
 ####**Version 161023i**
 
@@ -528,3 +538,66 @@ Damit fügen wir den ganzen Code einer Datei an dieser Stelle ein.
 Bei Windows sieht das dann so aus:
 
 	#inc Pfad\Zur\Datei.ny5
+
+
+###2.1 Funktionen
+
+Funktionen sind bei den meisten Programmiersprachen ein essentieller Bestandteil.
+Auch wenn Funktionen  in Ny++5 nicht direkt zum Kontext passen, habe ich sie hinzugefügt um die Programmierung zu vereinfachen.
+
+####**2.1.1 Funktionen deklarieren**
+
+Wir deklarieren Funktionen mit dem Keyword `deff`:
+
+	deff Funktion [[
+		? Hier kommt Code rein ?
+	]]
+
+Ein Beispiel dazu:
+
+	deff Hallo_Welt [[
+		say "Hallo Welt";@
+	]]
+
+Dadurch deklarieren wir eine Funktione mit dem Namen `Hallo_Welt`, welche, wenn sie aufgerufen wird, `Hallo Welt` ausgibt. Funktionen dürfen keine Leerzeichen im Namen beinhalten, dies kann man aber mit einem `_` ersetzen.
+
+####**2.1.2 Funktionen aufrufen**
+
+Wir haben zwar nun eine Funktion deklariert, jedoch wird sie niemals ausgeführt, wenn sie nicht direkt mit dem KeyWord `runf` aufgerufen wird, niemals ausgeführt. So sieht der Aufbau von `runf` aus:
+
+	runf [Funktionsname];
+
+Nun deklarieren wir uns mal eine Funktion und rufen sie auf:
+
+	deff Hallo [[
+		say "Hallo Welt!";@
+	]]
+
+	runf Hallo;
+	end;
+
+Damit deklarieren wir uns dann eine Funktion und rufen sie auf. Dann wird das Programm beendet. Am Ende sollte dan
+
+	Hallo Welt!
+
+auf der Konsole stehen.
+
+####**2.1.3 Parameter/Argumente**
+
+Wenn wir nun speziferische angaben machen wollen, können wir dies so machen:
+
+	deff Hallo_Name [[
+		say "Hallo ";
+		prv param1;@
+	]]
+
+	defs param1, [n];
+	say "Wie ist dien Name? ";
+
+	inp param1;
+	runf Hallo_Name;
+	end;
+
+Damit wird die Funktion `Hallo_Name` deklariert. Sie brauch ein Standardargument namens `param1`. Dies deklarieren wir entweder vor der Verwendung oder am Anfang der Datei um es mehrfach zu nutzen. Wir lesen dann also die deklarierte Variable `param1` ein und sie wird automatisch der Funktion übergeben und es wird ein `Hallo XXX` ausgegeben. Satt dem `XXX` natürlich der eingegebene Name.
+
+Parameter sind ein schwieriges Thema, bald werden vermutlich Standarbibliotheken folgen, in denen die Variablen deklariert werden und dann im Programm genutzt werden können. 

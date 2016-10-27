@@ -7,6 +7,8 @@ import com.github.triploit.npp5.Main;
 import com.github.triploit.npp5.Objects.Function;
 import com.github.triploit.npp5.other.Err;
 import com.github.triploit.npp5.other.LangVars;
+import com.github.triploit.npp5.run.Parser;
+import com.github.triploit.npp5.run.Tokenizer;
 
 public class RunF 
 {
@@ -23,14 +25,19 @@ public class RunF
 		
 		for (int i = 0; i < lv.getFunctionList().size(); i++)
 		{
-			//System.out.println("["+i+"] \""+lv.getFunctionList().get(i).getName()+"\"");
+			//System.out.println("["+i+"] \""+lv.getFunctionList().get(i).getName()+"\" ?? "+args.get(1));
 			
 			if (lv.getFunctionList().get(i).getName().equals(args.get(1)))
 			{
-			    Function f = lv.getFunctionList().get(i);
-			    f.runFunction();
+			    Function f = lv.getFunctionList().get(i);			    
+			    Parser p = new Parser("", false, "", false);
 			    
-//			    System.out.println("[[\n"+f.getCommands()+"\n]]");
+			    p.setRawCode(f.getCommands());
+			    Tokenizer t = new Tokenizer(p);			    
+			    //System.out.println("[[\n"+t.getParser().getRawCode()+"\n]]");
+			    
+			    t.doTokenize();
+			    t.executeCode();
 			    return;
 			}
 			

@@ -24,6 +24,7 @@ public class Function
 		p.setRawCode(commands);
 		
 		t = new Tokenizer(p);
+		//System.out.println("NEW COMMAND: "+name+"\n>>> "+commands +"\n<<<");
 	}
 	
 	public String getName()

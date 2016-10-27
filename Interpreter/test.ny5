@@ -1,4 +1,8 @@
 {main}
+  deff  Hallo [[
+    say "Hallo Welt!";@
+  ]];
+
   defs  inpf, [n];
   defs  inpf2, [n];
   defi  a3, 3;
@@ -14,4 +18,5 @@
   prv   inpf;@
 
   prv   _fos;@
+  runf  Hallo;
 end;

@@ -13,7 +13,7 @@ import com.github.triploit.npp5.run.Tokenizer;
 public class Main 
 {
 	private static LangVars lv = new LangVars();
-	private static String version = "162610i";
+	private static String version = "161027j";
 	private static String fname = "";
 	private static boolean cpp = false;
 	private static boolean endf = true;
@@ -37,7 +37,7 @@ public class Main
 		    System.out.println( "[ ERR ]:[ SYS ]:[ USE ]:[ ARGUMENTS ] Fehlende Argumente! Bitte so nutzen:\n\t"+
 		    		">>  nypp -r <Datei>\n\t"+
 		    		">>  nypp -c <EingabeDatei> <AusgabeDatei>.nct5\n\t"+
-		    		">>  nypp -h"+
+		    		">>  nypp -h\n\t"+
 		    		">>  nypp --help");
 		}
 		
