@@ -551,13 +551,13 @@ Wir deklarieren Funktionen mit dem Keyword `deff`:
 
 	deff Funktion [[
 		? Hier kommt Code rein ?
-	]]
+	]];
 
 Ein Beispiel dazu:
 
 	deff Hallo_Welt [[
 		say "Hallo Welt";@
-	]]
+	]];
 
 Dadurch deklarieren wir eine Funktione mit dem Namen `Hallo_Welt`, welche, wenn sie aufgerufen wird, `Hallo Welt` ausgibt. Funktionen dürfen keine Leerzeichen im Namen beinhalten, dies kann man aber mit einem `_` ersetzen.
 
@@ -571,7 +571,7 @@ Nun deklarieren wir uns mal eine Funktion und rufen sie auf:
 
 	deff Hallo [[
 		say "Hallo Welt!";@
-	]]
+	]];
 
 	runf Hallo;
 	end;
@@ -589,7 +589,7 @@ Wenn wir nun speziferische angaben machen wollen, können wir dies so machen:
 	deff Hallo_Name [[
 		say "Hallo ";
 		prv param1;@
-	]]
+	]];
 
 	defs param1, [n];
 	say "Wie ist dien Name? ";
@@ -600,4 +600,4 @@ Wenn wir nun speziferische angaben machen wollen, können wir dies so machen:
 
 Damit wird die Funktion `Hallo_Name` deklariert. Sie brauch ein Standardargument namens `param1`. Dies deklarieren wir entweder vor der Verwendung oder am Anfang der Datei um es mehrfach zu nutzen. Wir lesen dann also die deklarierte Variable `param1` ein und sie wird automatisch der Funktion übergeben und es wird ein `Hallo XXX` ausgegeben. Satt dem `XXX` natürlich der eingegebene Name.
 
-Parameter sind ein schwieriges Thema, bald werden vermutlich Standarbibliotheken folgen, in denen die Variablen deklariert werden und dann im Programm genutzt werden können. 
+Parameter sind ein schwieriges Thema, bald werden vermutlich Standarbibliotheken folgen, in denen die Variablen deklariert werden und dann im Programm genutzt werden können.
